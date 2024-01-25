@@ -384,79 +384,16 @@
           swiperBtn.style.display = "none";
         }
       });
+      const wrap = swiperBtn.parentElement.querySelector("ul");
+      const liCount = wrap.querySelectorAll("li").length;
+      if (liCount <= 10) {
+        swiperBtn.style.display = "none";
+      }
     });
 
     setTimeout(() => {
       swiper2.update();
     }, 450);
-
-    // function initSlideMoreButton(slideIndex) {
-    //   const currentSlide = swiper2.slides[slideIndex];
-    //   const loadMoreButton = currentSlide.querySelector(".load-more");
-    //   const listItems = currentSlide.querySelectorAll(".list-item");
-    //   const itemsToShow = 6;
-    //   let currentItemIndex = itemsToShow;
-
-    //   if (listItems.length <= itemsToShow) {
-    //     loadMoreButton.style.display = "none";
-    //   }
-
-    //   function toggleListItems() {
-    //     for (let i = 0; i < listItems.length; i++) {
-    //       if (i < currentItemIndex) {
-    //         listItems[i].style.display = "block";
-    //       } else {
-    //         listItems[i].style.display = "none";
-    //       }
-    //     }
-    //   }
-
-    //   toggleListItems();
-
-    //   loadMoreButton.addEventListener("click", function () {
-    //     currentItemIndex += itemsToShow;
-    //     toggleListItems();
-    //     if (currentItemIndex >= listItems.length) {
-    //       loadMoreButton.style.display = "none";
-    //     }
-    //   });
-    // }
-
-    // initSlideMoreButton(0); // 初期化
-
-    // initSlideMoreButton(swiper2.activeIndex);
-
-    // function initSlideMoreButton(slideIndex) {
-    //   const currentSlide = swiper2.slides[slideIndex];
-    //   const loadMoreButton = currentSlide.querySelector(".load-more");
-    //   const listItems = currentSlide.querySelectorAll(".list-item");
-    //   const itemsToShow = 6; // 1回に表示するアイテム数
-    //   let currentItemIndex = itemsToShow;
-
-    //   if (listItems.length <= itemsToShow) {
-    //     loadMoreButton.style.display = "none";
-    //   }
-
-    //   function toggleListItems() {
-    //     for (let i = 0; i < listItems.length; i++) {
-    //       if (i < currentItemIndex) {
-    //         listItems[i].style.display = "block";
-    //       } else {
-    //         listItems[i].style.display = "none";
-    //       }
-    //     }
-    //   }
-
-    //   toggleListItems(); // 初期表示
-
-    //   loadMoreButton.addEventListener("click", function () {
-    //     currentItemIndex += itemsToShow;
-    //     toggleListItems();
-    //     if (currentItemIndex >= listItems.length) {
-    //       loadMoreButton.style.display = "none";
-    //     }
-    //   });
-    // }
 
     // @@@@ もっと見るボタン
     function setupMoreButton(sectionSelector, moreNum) {
@@ -483,15 +420,18 @@
         }
       });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        var list = section.querySelectorAll(".list li").length;
-        if (list < moreNum) {
-          listBtn.classList.add("is-btn-hidden");
-        }
-      });
+      var list = section.querySelectorAll(".list li").length;
+      if (list <= moreNum) {
+        listBtn.classList.add("is-hidden");
+      }
     }
-    setupMoreButton("#news", 3);
-    setupMoreButton("#member", 2);
+
+    if (document.getElementById("news")) {
+      setupMoreButton("#news", 3);
+    }
+    if (document.getElementById("member")) {
+      setupMoreButton("#member", 2);
+    }
 
     // @@@@@ メールのコピー
     const copyButton = document.getElementById("contact-btn");
