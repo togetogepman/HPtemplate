@@ -817,7 +817,11 @@ footer {
   display: inline-block
 }
 
-.mySwiper2 ul li:before {
+.mySwiper2 ul:not(.num) li {
+  list-style: disc;
+}
+
+.mySwiper2 .num li:before {
   counter-increment: a 1;
   content: counter(a) ". "
 }
