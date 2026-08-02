@@ -2,115 +2,101 @@
 
 この文書は、Codexを使わずHTMLを直接編集する方向けです。通常は目的別プロンプトをCodexへ渡す方法を推奨します。
 
-編集前にファイルをコピーするだけでなく、Gitでcommitして変更前状態を残してください。`sample.html`は見本として維持し、実際の情報は`index.html`へ入力します。
+編集前にGitでcommitして変更前の状態を残してください。`sample.html`は見本として維持し、実際の情報は`index.html`へ入力します。入力資料にない人物、業績、所属、受賞、URL等は作成しないでください。
 
 ## ヘッダーと研究室名
 
-`index.html`の`.header-name-wrapp-ja`と`.header-name-wrapp-en`を変更します。
+`index.html`の`.site-brand__ja`と`.site-brand__en`を変更します。ヒーロー内の研究室名とページの`title`、description、OGP情報も同じ内容へ合わせます。
 
 ```html
-<span class="header-name-wrapp-ja">研究室名を入力してください</span>
-<span class="header-name-wrapp-en">Laboratory Name</span>
+<span class="site-brand__ja">研究室名を入力してください</span>
+<span class="site-brand__en" lang="en">Laboratory Name</span>
 ```
 
 ## ナビゲーション
 
-ナビ項目は各`section`の`data-title`と`id`からJavaScriptが生成します。`#nav-list`の中へ直接リンクを書かないでください。
+ナビ項目は`#site-nav`内へ明示的に記載しています。セクションを追加、移動、削除する場合は、対応するリンクも同時に確認します。
 
 ```html
-<section
-  data-accordion="normal"
-  data-class="nav-default"
-  data-title="NEWS"
-  id="news"
-  class="scroll-point"
-></section>
+<li><a href="#news">NEWS</a></li>
 ```
 
-`id`はページ内で重複させません。論文セクションは`data-accordion="nav-drop"`を維持します。
+リンクの`href="#news"`と、移動先の`<section id="news">`を一致させます。`id`はページ内で重複させません。`href="#"`や空の`href`を仮リンクとして残さないでください。
 
 ## 画像
 
 画像を`assets/images/`へ置き、`src`と`alt`を変更します。ファイル名の大文字・小文字はGitHub Pagesで区別されます。
 
 ```html
-<img
-  src="./assets/images/sample-mv.png"
-  alt="研究室のメインビジュアル（画像内容を具体的に説明）"
-/>
+<img src="./assets/images/sample-mv.png" alt="画像内容を具体的に説明" />
 ```
 
-人物、学生、大学ロゴ、共同研究先ロゴ等は掲載許可を確認してください。過去の版で削除された出典不明の画像やプロフィール画像を復活させないでください。
+人物、学生、大学ロゴ、共同研究先ロゴ等は掲載許可を確認してください。装飾画像は空alt、情報を伝える画像は用途が分かるaltにします。
 
 ## NEWS
 
-`.news-li-wrapp`直下の`li[data-more]`を複製し、新しい順に配置します。初期3件、4件目以降が「もっと見る」の対象です。
-
-リンクなしNEWSでは`.is-link`と`a.link`を付けません。外部リンクがある場合だけ、次の安全属性を使います。
+`.news-list`直下の`li`を複製し、新しい順に配置します。すべての項目を初期表示するため、件数に応じたJavaScript変更は不要です。
 
 ```html
-<a
-  href="https://example.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="link"
->記事を見る</a>
-```
-
-`href="#"`を仮リンクとして残さないでください。
-
-## 研究テーマ
-
-`.theme-wrapp`直下の`.theme-item`を複製します。番号はCSSカウンターで自動表示されます。
-
-```html
-<li class="theme-item">
-  <h3 class="h3-number">研究テーマ名を入力してください</h3>
-  <div class="theme-body">
-    <p>研究の背景、目的、独自性を入力してください。</p>
+<li>
+  <div class="resource-list__meta">
+    <time datetime="2026-08-02">2026年8月2日</time>
+    <span class="label">お知らせ</span>
   </div>
+  <p class="resource-list__title">お知らせのタイトル</p>
 </li>
 ```
 
+リンクがある場合は、タイトル自体を`a`で囲みます。外部リンクを新しいタブで開く場合は`target="_blank"`、`rel="noopener noreferrer"`、外部リンク表示と「新しいタブで開きます」という代替文言を付けます。
+
+## 研究テーマ
+
+`.card-grid`直下の`.research-card`を複製します。画像、研究領域、テーマ名、短い説明、目的が分かる導線を編集します。カード全体をリンクにせず、リンクだけを操作対象にします。
+
 ## モットー
 
-`.motto-wrapp`直下の`li`を追加・削除し、見出しと本文を編集します。
+`.statement-list`直下の`.statement`を追加・削除し、番号、見出し、本文を編集します。番号が内容上重要な場合は`aria-hidden="true"`を外し、読み上げ可能な実テキストにします。
 
-## メンバーとOB・OG
+## メンバーとOB／OG
 
-`.member-wrapp`直下の`.member-li-wrapp[data-more]`がグループです。初期2グループ、3グループ目以降が「もっと見る」の対象です。
+`.member-groups`直下の`.member-group`が所属・課程グループです。グループには固有の見出し`id`を設定し、`aria-labelledby`と一致させます。
 
-氏名、学年、職位、進路、所属先は必ず確認し、掲載許可を得てください。
+在籍メンバーは通常のリストで表示します。件数が多いOB／OGだけ`details`に掲載できます。氏名、学年、職位、進路、所属先は原資料と照合し、掲載許可を確認してください。
 
 ## プロフィール
 
-役職、氏名、英語名、経歴、受賞、学会をそれぞれ編集します。項目がない場合は架空情報で埋めず、プレースホルダーのままにするか項目を削除します。
+基本情報は`.description-list`の`div`単位で編集します。項目名は`dt`、内容は`dd`です。経歴と受賞歴は`.timeline`、所属学会は`.plain-list`へ追加します。
 
-画像を使う場合は`.profile-image-placeholder`を`img`へ置き換えます。縦横比3:4を推奨します。
+画像を使う場合は`.profile-photo`を`img`へ置き換えます。縦横比3:4を推奨します。項目がない場合は架空情報で埋めず、プレースホルダーのままにするか、項目全体を削除します。
 
 ## 論文・研究発表
 
-`.mySwiper`のタブと`.mySwiper2`の内容スライドは、同じ順序・同じ数にします。
+`.publication-groups`内の「論文誌」「学会発表」「外部記事」「書籍」「その他」の該当sectionへ追加します。業績は`.publication-list`の`li`へ年と本文を記載します。
 
-論文項目は各スライドの`ul.paper`へ追加します。初期6件、7件目以降が「もっと見る」の対象です。著者順、タイトル、誌名、巻号、年、DOI、URLを原資料と照合してください。
+```html
+<li>
+  <time>2026年</time>
+  <p>原資料と照合した書誌情報</p>
+</li>
+```
 
-0件の場合は空の`ul.paper`と`.academic-empty`を使います。
+0件の場合は`.empty-state`で入力案内を表示します。著者順、題名、誌名、巻号、年、DOI、URLを原資料と照合し、推測で補完しないでください。
 
 ## Contact
 
-メールアドレスは`#tagText`の`value`へ入力します。
+表示用メールアドレスは`#contact-email`のテキストを変更します。コピーボタンの`data-copy-target="contact-email"`と一致させます。
 
 ```html
-<input id="tagText" type="text" value="contact@example.com" hidden readonly />
+<span class="contact-email" id="contact-email">contact@example.ac.jp</span>
 ```
 
-公開前に予約ドメインの値を実際の問い合わせ先へ変更し、コピー操作を確認してください。個人メールを使うか、研究室共有アドレスを使うかは組織規則に従ってください。
+公開前にダミー値を正式な問い合わせ先へ変更し、通常コピーと失敗時の案内を確認します。個人メールを使うか研究室共有アドレスを使うかは、組織規則に従ってください。
 
-Google Mapsを掲載する場合は、自分の研究室所在地の正式な埋め込みコードだけを使用します。APIキーをHTMLへ書かないでください。
+所在地とアクセスを分けて編集します。地図リンクは正式な所在地を確認できた場合だけ追加し、APIキーをHTMLへ書かないでください。
 
 ## meta、OGP、favicon
 
-`title`、`description`、OG/Twitter用title・description・image・altを更新します。OGP画像、favicon、Apple Touch Iconのファイル参照が404にならないことを確認してください。
+`title`、description、OG/Twitter用title・description・image・altを更新します。OGP画像、favicon、Apple Touch Iconのローカル参照が404にならないことを確認してください。
 
 ## デザイン
 
@@ -118,4 +104,4 @@ Google Mapsを掲載する場合は、自分の研究室所在地の正式な埋
 
 ## 帰属表示
 
-無料利用時は、`index.html`と`sample.html`のアカデメイア帰属表示、ロゴ、正式サービスリンクを削除・非表示化・別URL化しないでください。
+無料利用時は、`index.html`と`sample.html`のアカデメイア帰属表示、ロゴ、正式サービスリンクを削除、非表示、別URL化しないでください。

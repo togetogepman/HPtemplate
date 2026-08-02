@@ -1,508 +1,222 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>研究室名を入力してください</title>
-    <meta
-      name="description"
-      content="研究室の概要を入力してください。"
-    />
+    <meta name="description" content="研究室の概要を入力してください。" />
     <link rel="icon" href="./assets/images/common/favicon.ico" sizes="any" />
-    <!-- 32×32 -->
-    <link
-      rel="icon"
-      href="./assets/images/common/favicon.svg"
-      type="image/svg+xml"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="./assets/images/common/apple_touch_icon.png"
-    />
-    <!-- 180×180 -->
-    <!-- og -->
+    <link rel="icon" href="./assets/images/common/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/images/common/apple_touch_icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="研究室名を入力してください" />
     <meta property="og:image" content="./assets/images/common/ogp.jpg" />
     <meta property="og:description" content="研究室の概要を入力してください。" />
     <meta property="og:site_name" content="研究室名を入力してください" />
     <meta property="og:locale" content="ja_JP" />
-    <!-- x -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="研究室名を入力してください" />
     <meta name="twitter:description" content="研究室の概要を入力してください。" />
     <meta name="twitter:image" content="./assets/images/common/ogp.jpg" />
     <meta name="twitter:image:alt" content="研究室のOGP画像を設定してください" />
     <meta name="twitter:dnt" content="on" />
-    <!-- fonts -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap");
-    </style>
-    <!-- style sheet -->
     <link rel="stylesheet" href="./assets/css/destyle.css" />
-    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./assets/css/theme.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <!-- Javascript -->
-    <script src="./assets/js/library.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script.js" defer></script>
   </head>
-
-  <!-- START ここからデザインの要素を入れていく -->
   <body id="top">
-    <!-- START header -->
-    <header id="header">
-      <div class="header-contents">
-        <a href="#top" class="header-title" aria-label="ページ先頭へ戻る">
-          <div class="header-box" aria-hidden="true"></div>
-          <div class="header-name">
-            <h1 class="header-name-wrapp">
-              <span class="header-name-wrapp-ja"
-                >研究室名を入力してください</span
-              >
-              <span class="header-name-wrapp-en"
-                >Laboratory Name</span
-              >
-            </h1>
-          </div>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+
+    <header class="site-header" id="header">
+      <div class="site-header__inner">
+        <a class="site-brand" href="#top" aria-label="ページ先頭へ戻る">
+          <span class="site-brand__ja">研究室名を入力してください</span>
+          <span class="site-brand__en" lang="en">Laboratory Name</span>
         </a>
         <button
-          id="burger"
-          class="is-sp"
+          class="menu-button"
+          id="menu-button"
           type="button"
-          aria-label="メニューを開く"
-          aria-controls="g-nav"
+          aria-controls="site-nav"
           aria-expanded="false"
+          aria-label="メニューを開く"
         >
-          <span class="header-burger"></span>
-          <span class="header-burger"></span>
-          <span class="header-burger"></span>
+          <span class="menu-button__icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="menu-button__label">メニュー</span>
         </button>
+        <nav class="site-nav" id="site-nav" aria-label="主要ナビゲーション">
+          <ul>
+            <li><a href="#news">NEWS</a></li>
+            <li><a href="#themes">研究テーマ</a></li>
+            <li><a href="#motto">モットー</a></li>
+            <li><a href="#members">メンバー</a></li>
+            <li><a href="#profile">プロフィール</a></li>
+            <li><a href="#publications">論文・発表</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="logo-university-pc is-pc" aria-hidden="true"></div>
     </header>
-    <!-- END header -->
 
-    <main>
-      <!-- START グローバルナビ -->
-      <nav id="g-nav">
-        <div class="nav-inner">
-          <p>Menu</p>
-          <div id="nav-list"></div>
-          <div
-            class="logo-university"
-            role="img"
-            aria-label="大学・組織ロゴの配置例"
-          >
-            <span class="logo-university-placeholder"
-              >大学・組織ロゴ<br />を設定してください</span
-            >
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <p class="eyebrow">研究室名 / Laboratory Name</p>
+            <h1 id="hero-title">研究内容を表す短いメッセージ</h1>
+            <p class="hero__lead">研究室の目的、扱う分野、社会との関わりを2〜3文で入力してください。入力資料にない事実は掲載しないでください。</p>
+            <div class="button-group">
+              <a class="button button--primary" href="#themes">研究テーマを見る</a>
+              <a class="button button--secondary" href="#contact">参加・共同研究の相談</a>
+            </div>
           </div>
+          <figure class="hero__media">
+            <img src="./assets/images/sample-mv.png" alt="研究室のメインビジュアル（掲載画像へ差し替えてください）" />
+            <figcaption>研究風景や研究内容を伝える画像と説明へ差し替えてください。</figcaption>
+          </figure>
         </div>
-        <span class="overlay"></span>
-      </nav>
-      <!-- END グローバルナビ -->
-      <div class="main-contents">
-        <!-- START メインビジュアル -->
-        <div class="mv">
-          <picture class="mv">
-            <img
-              src="./assets/images/sample-mv.png"
-              alt="研究室のメインビジュアル（掲載画像へ差し替えてください）"
-            />
-          </picture>
+      </section>
+
+      <section class="section section--surface" id="news" aria-labelledby="news-title">
+        <div class="container section-heading">
+          <p class="section-heading__en" lang="en">News</p>
+          <h2 id="news-title">NEWS</h2>
+          <p>研究室からのお知らせを、新しいものから順に掲載します。</p>
         </div>
-        <!-- END メインビジュアル -->
-
-        <!-- START 研究テーマ -->
-        <section
-          data-accordion="normal"
-          data-class="nav-default"
-          data-title="研究テーマ"
-          id="themes"
-          class="scroll-point"
-        >
-          <h2>研究テーマ</h2>
-          <ul class="theme-wrapp">
-            <li class="theme-item">
-              <h3 class="h3-number">研究テーマ名を入力してください</h3>
-              <div class="theme-body">
-                <p>
-                  研究の背景、目的、独自性を入力してください。入力資料にない研究内容や共同研究先をAIに推測させないでください。
-                </p>
-                <div class="theme-img">
-                  <picture>
-                    <img
-                      src="./assets/images/sample-ph-02.png"
-                      alt="研究テーマの画像（掲載画像とaltへ差し替えてください）"
-                    />
-                  </picture>
-                </div>
-                <p>
-                  研究方法、成果、社会への応用等を入力してください。公開前に掲載内容と画像の権利を確認してください。
-                </p>
-              </div>
-            </li>
-          </ul>
-        </section>
-        <!-- END 研究テーマ -->
-
-        <!-- START NEWS -->
-        <section
-          data-accordion="normal"
-          data-class="nav-default"
-          data-title="NEWS"
-          id="news"
-          class="scroll-point"
-        >
-          <h2>NEWS</h2>
-          <ul class="news-li-wrapp">
-            <li class="news-item" data-more="">
-              <div class="news-date">20XX.XX.XX</div>
-              <div class="news-text">
-                <div class="news-title">
-                  最新のお知らせを入力してください。
-                </div>
-              </div>
-            </li>
-          </ul>
-          <button class="more-btn" type="button">
-            <svg viewBox="0 0 13 3">
-              <use xlink:href="./assets/images/ico/splite.svg#ico-more"></use>
-            </svg>
-            もっと見る
-          </button>
-        </section>
-        <!-- END NEWS -->
-
-        <!-- START 研究室のモットー -->
-        <section
-          data-accordion="normal"
-          data-class="nav-default"
-          data-title="研究室のモットー"
-          id="motto"
-          class="scroll-point"
-        >
-          <h2>研究室のモットー</h2>
-          <ul class="motto-wrapp">
+        <div class="container container--reading">
+          <ul class="resource-list news-list">
             <li>
-              <h3>研究室の方針を入力してください</h3>
-              <p>
-                研究室が大切にしている考え方、教育方針、研究環境等を入力してください。
-              </p>
+              <div class="resource-list__meta"><time datetime="20XX-01-01">20XX年X月X日</time><span class="label">お知らせ</span></div>
+              <p class="resource-list__title">最新のお知らせを入力してください。</p>
             </li>
           </ul>
-        </section>
-        <!-- END 研究室のモットー -->
+        </div>
+      </section>
 
-        <!-- START 研究室メンバー -->
-        <section
-          data-accordion="normal"
-          data-class="nav-default"
-          data-title="研究室メンバー"
-          id="member"
-          class="scroll-point member"
-        >
-          <h2>研究室メンバー</h2>
-          <ul class="member-wrapp">
-            <li class="member-li-wrapp" data-more="">
-              <h4>職位・学年を入力してください</h4>
-              <ul class="member-li">
-                <li class="member-name-li">
-                  <div class="member-name">
-                    <p>［氏名を入力してください］</p>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <button class="more-btn" type="button">
-            <svg viewBox="0 0 13 3">
-              <use
-                xlink:href="./assets/images/ico/splite.svg#ico-more"
-              ></use></svg
-            >もっと見る
-          </button>
-        </section>
-        <!-- END 研究室メンバー -->
-
-        <!-- START プロフィール -->
-        <section
-          data-accordion="normal"
-          data-class="nav-default"
-          data-title="プロフィール"
-          id="profile"
-          class="scroll-point"
-        >
-          <h2>プロフィール</h2>
-          <div class="profile-wrapp">
-            <div class="profile-info-wrapp">
-              <div
-                class="profile-image-placeholder"
-                role="img"
-                aria-label="プロフィール画像の入力用表示"
-              >
-                プロフィール画像<br />を設定してください
-              </div>
-              <div>
-                <div class="profile-info-text-wrapp">
-                  <p class="profile-info-position">［役職を入力してください］</p>
-                  <div class="profile-info-name">
-                    <p class="profile-info-name-ja">［研究者名を入力してください］</p>
-                    <p>Researcher Name</p>
-                  </div>
-                </div>
-                <div class="profile-info-link-wrapp">
-                  <p>研究者紹介ページのURLを設定してください。</p>
-                  <p>研究業績ページのURLを設定してください。</p>
-                </div>
-              </div>
+      <section class="section" id="themes" aria-labelledby="themes-title">
+        <div class="container section-heading">
+          <p class="section-heading__en" lang="en">Research</p>
+          <h2 id="themes-title">研究テーマ</h2>
+          <p>研究の対象、方法、目指す成果をテーマごとに紹介します。</p>
+        </div>
+        <div class="container card-grid">
+          <article class="research-card">
+            <img src="./assets/images/sample-ph-02.png" alt="研究テーマの画像（掲載画像とaltへ差し替えてください）" />
+            <div class="research-card__body">
+              <p class="eyebrow">研究領域を入力</p>
+              <h3>研究テーマ名を入力してください</h3>
+              <p>研究の背景、目的、方法、独自性を短く入力してください。長い説明は適切な段落に分けます。</p>
+              <a class="arrow-link" href="#contact">この研究テーマについて問い合わせる</a>
             </div>
-            <ul class="profile-history-wrapp">
-              <li>
-                <h4>経歴</h4>
-                <ul class="profile-history-li">
-                  <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">20XX</p>
-                    <div class="profile-history-text">
-                      <p>［学歴・経歴を入力してください］</p>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h4>受賞歴</h4>
-                <ul class="profile-history-li">
-                  <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">20XX</p>
-                    <div class="profile-history-text">
-                      <p>［受賞歴を入力してください］</p>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <h4>所属学会</h4>
-                <ul class="profile-history-li">
-                  <li class="profile-history-text-wrapp">
-                    <div class="profile-history-text">
-                      <p>［所属学会を入力してください］</p>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <!-- END プロフィール -->
+          </article>
+        </div>
+      </section>
 
-        <!-- START 論文・研究発表 -->
-        <section
-          data-accordion="nav-drop"
-          data-class="nav-default"
-          data-title="論文・研究発表"
-          id="academic"
-          class="scroll-point"
-        >
-          <h2>論文・研究発表</h2>
-          <div class="academic-inner">
-            <div class="swiper mySwiper tab">
-              <div class="swiper-wrapper tab-wrapp">
-                <div class="swiper-slide" data-index="論文誌">論文誌</div>
-                <div class="swiper-slide" data-index="学会発表">学会発表</div>
-                <div class="swiper-slide" data-index="外部記事">外部記事</div>
-                <div class="swiper-slide" data-index="書籍">書籍</div>
-                <div class="swiper-slide" data-index="その他">その他</div>
-              </div>
-              <div class="swiper-button-next">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="8"
-                  height="14"
-                  viewBox="0 0 8 14"
-                  fill="none"
-                >
-                  <path
-                    d="M1.41797 12.2077L6.6263 6.99935L1.41797 1.79102"
-                    stroke="#2269D3"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <div class="swiper-button-prev">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="8"
-                  height="14"
-                  viewBox="0 0 8 14"
-                  fill="none"
-                >
-                  <path
-                    d="M6.625 12.2067L1.41667 6.99837L6.625 1.79004"
-                    stroke="#2269D3"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div class="swiper mySwiper2">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <ul class="paper num">
-                    <li class="list-item">［論文情報を入力してください］</li>
-                  </ul>
-                  <button class="load-more" type="button">
-                    <svg viewBox="0 0 13 3">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-more"
-                      ></use></svg
-                    >もっと見る
-                  </button>
-                </div>
-                <div class="swiper-slide">
-                  <ul class="paper"></ul>
-                  <p class="academic-empty">学会発表情報を入力してください。</p>
-                  <button class="load-more" type="button">
-                    <svg viewBox="0 0 13 3">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-more"
-                      ></use></svg
-                    >もっと見る
-                  </button>
-                </div>
-                <div class="swiper-slide">
-                  <ul class="paper"></ul>
-                  <p class="academic-empty">外部記事情報を入力してください。</p>
-                  <button class="load-more" type="button">
-                    <svg viewBox="0 0 13 3">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-more"
-                      ></use></svg
-                    >もっと見る
-                  </button>
-                </div>
-                <div class="swiper-slide">
-                  <ul class="paper"></ul>
-                  <p class="academic-empty">書籍情報を入力してください。</p>
-                  <button class="load-more" type="button">
-                    <svg viewBox="0 0 13 3">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-more"
-                      ></use></svg
-                    >もっと見る
-                  </button>
-                </div>
-                <div class="swiper-slide">
-                  <ul class="paper"></ul>
-                  <p class="academic-empty">その他の研究活動を入力してください。</p>
-                  <button class="load-more" type="button">
-                    <svg viewBox="0 0 13 3">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-more"
-                      ></use></svg
-                    >もっと見る
-                  </button>
-                </div>
-              </div>
+      <section class="section section--tint" id="motto" aria-labelledby="motto-title">
+        <div class="container section-heading">
+          <p class="section-heading__en" lang="en">Principles</p>
+          <h2 id="motto-title">研究室のモットー</h2>
+          <p>研究と教育で大切にしている姿勢を、簡潔なステートメントで示します。</p>
+        </div>
+        <div class="container statement-list">
+          <article class="statement"><p class="statement__number" aria-hidden="true">01</p><div><h3>研究室の方針を入力してください</h3><p>研究室が大切にする考え方、教育方針、研究環境を具体的に入力してください。</p></div></article>
+        </div>
+      </section>
+
+      <section class="section" id="members" aria-labelledby="members-title">
+        <div class="container section-heading">
+          <p class="section-heading__en" lang="en">People</p>
+          <h2 id="members-title">研究室メンバー</h2>
+          <p>所属・課程別にメンバーを掲載します。氏名や進路は、公開許可を確認してください。</p>
+        </div>
+        <div class="container container--reading member-groups">
+          <section class="member-group" aria-labelledby="faculty-title">
+            <h3 id="faculty-title">教員</h3>
+            <ul><li><span class="member-name">［氏名を入力してください］</span><span class="member-role">［職位・担当を入力してください］</span></li></ul>
+          </section>
+          <section class="member-group" aria-labelledby="students-title">
+            <h3 id="students-title">学生</h3>
+            <ul><li><span class="member-name">［氏名を入力してください］</span><span class="member-role">［課程・学年を入力してください］</span></li></ul>
+          </section>
+          <details class="alumni">
+            <summary>OB／OG</summary>
+            <p>氏名や進路を掲載する場合は、本人の公開許可と公開範囲を確認してください。</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section section--surface" id="profile" aria-labelledby="profile-title">
+        <div class="container section-heading">
+          <p class="section-heading__en" lang="en">Profile</p>
+          <h2 id="profile-title">プロフィール</h2>
+          <p>代表教員の基本情報、経歴、受賞歴、所属学会を掲載します。</p>
+        </div>
+        <div class="container profile-grid">
+          <div class="profile-photo" role="img" aria-label="プロフィール画像の入力用表示">プロフィール画像を設定してください</div>
+          <div class="profile-main">
+            <dl class="description-list">
+              <div><dt>氏名</dt><dd>［研究者名を入力してください］</dd></div>
+              <div><dt>英語表記</dt><dd lang="en">Researcher Name</dd></div>
+              <div><dt>職位</dt><dd>［職位を入力してください］</dd></div>
+              <div><dt>所属</dt><dd>［所属を入力してください］</dd></div>
+              <div><dt>専門</dt><dd>［専門分野を入力してください］</dd></div>
+              <div><dt>学位</dt><dd>［学位を入力してください］</dd></div>
+              <div><dt>外部プロフィール</dt><dd>URLを確認後にリンクを設定してください。</dd></div>
+              <div><dt>研究者情報</dt><dd>Google Scholar等のURLを確認後に設定してください。</dd></div>
+            </dl>
+            <div class="profile-history">
+              <section aria-labelledby="career-title"><h3 id="career-title">経歴</h3><ul class="timeline"><li><time>20XX年</time><span>［学歴・経歴を入力してください］</span></li></ul></section>
+              <section aria-labelledby="awards-title"><h3 id="awards-title">受賞歴</h3><ul class="timeline"><li><time>20XX年</time><span>［受賞歴を入力してください］</span></li></ul></section>
+              <section aria-labelledby="societies-title"><h3 id="societies-title">所属学会</h3><ul class="plain-list"><li>［所属学会を入力してください］</li></ul></section>
             </div>
           </div>
-        </section>
-        <!-- END 論文・研究発表 -->
+        </div>
+      </section>
 
-        <!-- START Contact -->
-        <section
-          data-accordion="normal"
-          data-class="nav-default"
-          data-title="Contact"
-          id="contact"
-          class="scroll-point"
-        >
-          <h2>Contact</h2>
-          <div class="contact-wrapp">
-            <div class="contact-text-wrapp">
-              <p class="contact-text">
-                研究室への問い合わせ方法や、学生募集に関する案内を入力してください。
-              </p>
-              <span id="message" role="status" aria-live="polite">
-                <span class="check">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="13"
-                    height="12"
-                    viewBox="0 0 13 12"
-                    fill="none"
-                  >
-                    <path
-                      d="M2 6L4.46154 9L10 3"
-                      stroke="#2269D3"
-                      stroke-width="1.5"
-                    />
-                  </svg>
-                </span>
-                <span class="text">メールアドレスをコピーしました</span>
-              </span>
-              <input
-                id="tagText"
-                type="text"
-                value="contact@example.com"
-                hidden
-                readonly
-              />
-              <button id="contact-btn" class="contact-btn" type="button">
-                <svg viewBox="0 0 14 11">
-                  <use
-                    xlink:href="./assets/images/ico/splite.svg#ico-mail"
-                  ></use>
-                </svg>
-                お問い合わせ
-              </button>
-            </div>
-            <div>
-              <div>
-                <p class="contact-access">アクセス</p>
-                <div class="contact-adress">
-                  <p>〒000-0000</p>
-                  <p>［住所を入力してください］</p>
-                </div>
-              </div>
-              <!-- 公開前に、ここを研究室自身のGoogle Maps埋め込みコードへ置き換えてください。 -->
-              <div class="googlemap googlemap-placeholder" role="note">
-                地図は未設定です。<br />公開前に研究室の地図を設定してください。
-              </div>
-            </div>
+      <section class="section" id="publications" aria-labelledby="publications-title">
+        <div class="container section-heading">
+          <p class="section-heading__en" lang="en">Publications</p>
+          <h2 id="publications-title">論文・研究発表</h2>
+          <p>業績をカテゴリーと年で整理します。入力資料にない業績は作成しないでください。</p>
+        </div>
+        <div class="container publication-groups">
+          <section aria-labelledby="journals-title"><h3 id="journals-title">論文誌</h3><ul class="publication-list"><li><time>20XX年</time><p>［著者、題名、誌名、巻号、ページ、年、DOI等を入力してください］</p></li></ul></section>
+          <section aria-labelledby="conferences-title"><h3 id="conferences-title">学会発表</h3><p class="empty-state">学会発表情報を入力してください。</p></section>
+          <section aria-labelledby="articles-title"><h3 id="articles-title">外部記事</h3><p class="empty-state">外部記事情報を入力してください。</p></section>
+          <section aria-labelledby="books-title"><h3 id="books-title">書籍</h3><p class="empty-state">書籍情報を入力してください。</p></section>
+          <section aria-labelledby="other-title"><h3 id="other-title">その他</h3><p class="empty-state">その他の研究活動を入力してください。</p></section>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="container section-heading section-heading--light">
+          <p class="section-heading__en" lang="en">Contact</p>
+          <h2 id="contact-title">Contact／アクセス</h2>
+          <p>相談内容と連絡方法、所在地を分けて案内します。</p>
+        </div>
+        <div class="container contact-grid">
+          <div class="contact-panel">
+            <section aria-labelledby="join-title"><h3 id="join-title">研究室への参加</h3><p>学生募集の対象、相談方法、事前に確認してほしい内容を入力してください。</p></section>
+            <section aria-labelledby="collaboration-title"><h3 id="collaboration-title">共同研究</h3><p>相談可能な分野や、初回連絡時に必要な情報を入力してください。</p></section>
+            <section aria-labelledby="inquiry-title"><h3 id="inquiry-title">問い合わせ方法</h3><p><span class="contact-email" id="contact-email">contact@example.ac.jp</span>（例示用ダミー）</p><button class="button button--primary copy-button" id="copy-email" type="button" data-copy-target="contact-email">メールアドレスをコピー</button><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></section>
           </div>
-        </section>
-        <!-- END Contact -->
-      </div>
+          <div class="contact-panel">
+            <section aria-labelledby="address-title"><h3 id="address-title">所在地</h3><address>〒000-0000<br />○○県○○市○○（例示用ダミー）</address></section>
+            <section aria-labelledby="access-title"><h3 id="access-title">アクセス</h3><p>最寄り駅、バス停、建物名等を入力してください。</p><p class="map-placeholder" role="note">地図リンクは未設定です。公開前に、正しい所在地と地図リンクを確認してください。</p></section>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- START フッター -->
-    <footer>
-      <!--
-        TEMPLATE CREDIT
-        無料利用時は、以下の株式会社アカデメイアの帰属表示と
-        サービスリンクを削除・非表示化しないでください。
-        帰属表示の削除には、有償の削除許諾が必要です。
-      -->
-      <div class="footer-link">
-        <p class="footer-link-text">Created with</p>
-        <a
-          href="https://www.academeia15.co.jp/web-template"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="アカデメイアの研究室HPテンプレート解説ページを開く"
-          ><img src="assets/images/logo-academeia.svg" alt="アカデメイア"
-        /></a>
-      </div>
-      <div class="footer-copyright">
-        Copyright (C) 20XX ［研究室名を入力してください］. All Rights Reserved.
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <a class="site-footer__brand" href="#top">研究室名を入力してください</a>
+        <nav aria-label="フッターナビゲーション"><ul><li><a href="#themes">研究テーマ</a></li><li><a href="#members">メンバー</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+        <!-- 無料利用時は、以下の帰属表示と正式サービスリンクを削除・非表示化しないでください。 -->
+        <div class="footer-credit"><p>Created with</p><a href="https://www.academeia15.co.jp/web-template" target="_blank" rel="noopener noreferrer" aria-label="アカデメイアの研究室HPテンプレート解説ページを新しいタブで開く"><img src="./assets/images/logo-academeia.svg" alt="アカデメイア" /><span class="external-indicator" aria-hidden="true">↗</span><span class="visually-hidden">新しいタブで開きます</span></a></div>
+        <p class="site-footer__copyright">Copyright (C) 20XX ［研究室名を入力してください］. All Rights Reserved.</p>
       </div>
     </footer>
-    <!-- END フッターの要素 -->
   </body>
-  <!-- END ここまでデザインの要素を入れていく -->
 </html>

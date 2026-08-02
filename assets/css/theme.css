@@ -1,47 +1,44 @@
 /*
- * Design tokens for the Laboratory HP Template.
- * Change values here for broad visual adjustments; keep layout rules in style.css.
+ * DADS-inspired design tokens for the Laboratory HP Template.
+ * Change values here for site-wide visual adjustments; keep component rules in style.css.
  */
 :root {
-  --color-primary: #2269d3;
-  --color-primary-dark: #2a5eab;
-  --color-text: #302f37;
-  --color-surface: #fff;
-  --color-surface-selected: #f3f4fb;
-  --color-section-alternate: #fbfcff;
-  --color-link: #1a55ad;
-  --color-muted: #a0a0a0;
-  --color-border: #d4dbe1;
-  --color-tab-surface: #f9f9f9;
-  --color-tab-control: hsla(0, 0%, 86%, .7);
-  --color-notice-surface: #fff8e1;
-  --color-notice-border: #e5c867;
-  --color-focus: #2269d3;
+  --color-primary: #0017c1;
+  --color-primary-hover: #000082;
+  --color-primary-active: #000060;
+  --color-text: #1a1a1a;
+  --color-text-subtle: #4d4d4d;
+  --color-background: #f7f7f8;
+  --color-surface: #ffffff;
+  --color-surface-tint: #eef2ff;
+  --color-border: #767676;
+  --color-border-light: #d8d8d8;
+  --color-link: #0017c1;
+  --color-link-visited: #86198f;
+  --color-focus: #ffd43d;
+  --color-focus-outline: #1a1a1a;
 
-  --font-family-base: "Noto Sans JP", sans-serif;
-  --font-size-base: 16px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
 
-  /* The current layout is fluid and intentionally has no global max width. */
-  --content-max-width: none;
-  --section-padding-block-mobile: 50px;
-  --section-padding-inline-mobile: 30px;
-  --section-padding-block-desktop: 5pc;
-  --section-padding-inline-desktop: 130px;
+  --font-family-base: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  --font-size-body: 1rem;
+  --font-size-heading-1: clamp(2rem, 4vw, 3.25rem);
+  --font-size-heading-2: clamp(1.75rem, 3.5vw, 2.75rem);
+  --font-size-heading-3: clamp(1.25rem, 2vw, 1.5rem);
+  --line-height-body: 1.75;
+  --line-height-heading: 1.4;
 
-  --radius-small: 4px;
-  --radius-card: 6px;
-  --radius-panel: 10px;
-  --radius-pill: 100vh;
-
-  /* Height includes the 1px bottom border; the mobile content offset remains 66px. */
-  --header-height-mobile: 67px;
-  --header-offset-mobile: 66px;
-  --header-height-desktop: 83px;
-  --nav-width-mobile: 300px;
-  --nav-width-desktop: 250px;
-
-  --duration-fast: .2s;
-  --duration-base: .3s;
-  --duration-slow: .4s;
-  --duration-menu: .55s;
+  --content-width: 75rem;
+  --reading-width: 56rem;
+  --header-height: 5rem;
+  --radius-small: 0.25rem;
+  --radius-medium: 0.5rem;
+  --duration-fast: 0.15s;
+  --duration-base: 0.25s;
 }

@@ -1,5 +1,7 @@
 # 研究室HPテンプレート
 
+> デザイン比較用のDADS試作版については、[DADSを利用した研究室HPテンプレート試作](docs/dads-prototype.md)を参照してください。
+
 ## 1. このテンプレートについて
 
 株式会社アカデメイアが、研究者個人または研究室向けに提供する「研究室HPテンプレート」です。HTML、CSS、JavaScriptをGitHubへ置き、GitHub Pagesで公開できます。CMS、ノーコードサービス、AIホームページ生成サービスではありません。
@@ -11,7 +13,7 @@ ChatGPTで原稿や依頼内容を整理し、Codexにファイル変更、検�
 - [完成サンプルを開く](./sample.html)
 - [利用開始用ページを開く](./index.html)
 
-`sample.html`は、すべてのセクション、長文、空データ、「もっと見る」の件数境界を確認する完成見本です。`index.html`は自分の研究室情報を入力する正本です。
+`sample.html`は、すべてのセクション、長文、空データ、NEWS 4件、メンバー3グループ以上、論文7件以上を確認する完成見本です。`index.html`は自分の研究室情報を入力する正本です。
 
 GitHub Pagesのプロジェクトサイトでは、完成サンプルの想定URLは次の形です。
 
@@ -76,7 +78,7 @@ Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から
 | `DESIGN.md` | 現行デザイン仕様と変更希望の記入欄 |
 | `assets/css/theme.css` | 色、フォント、主要余白等の変更頻度が高い値 |
 | `assets/css/style.css` | レイアウトとコンポーネント実装 |
-| `assets/js/script.js` | ナビ、Swiper、「もっと見る」、コピー等の機能 |
+| `assets/js/script.js` | モバイルメニューとメールアドレスコピーの機能 |
 | `prompts/` | 目的別のCodex依頼テンプレート |
 | `docs/` | 詳細な利用・公開・安全文書 |
 
