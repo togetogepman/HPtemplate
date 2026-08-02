@@ -1,405 +1,157 @@
-# 研究者テンプレページの仕様書
+# 研究室HPテンプレート
 
-- [研究者テンプレページの仕様書](#研究者テンプレページの仕様書)
-  - [ヘッダーについて](#ヘッダーについて)
-    - [上部ヘッダーについて](#上部ヘッダーについて)
-    - [グローバルメニューについて](#グローバルメニューについて)
-      - [大学ロゴについて](#大学ロゴについて)
-  - [メインコンテンツ](#メインコンテンツ)
-    - [ヘッダー画像について](#ヘッダー画像について)
-    - [セクションについて](#セクションについて)
-    - [NEWS セクションについて](#news-セクションについて)
-    - [研究テーマセクションについて](#研究テーマセクションについて)
-    - [研究室のモットーセクションについて](#研究室のモットーセクションについて)
-    - [研究室メンバーセクションについて](#研究室メンバーセクションについて)
-    - [プロフィールセクションについて](#プロフィールセクションについて)
-    - [論文研究発表セクションについて](#論文研究発表セクションについて)
-    - [Contact セクションについて](#contact-セクションについて)
-  - [その他](#その他)
-    - [meta 情報について](#meta-情報について)
+## 1. このテンプレートについて
 
-## ヘッダーについて
+株式会社アカデメイアが、研究者個人または研究室向けに提供する「研究室HPテンプレート」です。HTML、CSS、JavaScriptをGitHubへ置き、GitHub Pagesで公開できます。CMS、ノーコードサービス、AIホームページ生成サービスではありません。
 
-### 上部ヘッダーについて
+ChatGPTで原稿や依頼内容を整理し、Codexにファイル変更、検証、commit、pushを依頼する使い方を想定しています。AIが作った内容は必ず人が確認してください。
 
-画面上部のヘッダー部分になります。下記該当コードの `header-box` `header-name-wrapp-ja` `header-name-wrapp-en` の内容を適宜編集してください。
+## 2. 完成サンプル
 
-```html
-<div class="header-contents">
-  <a href="#top" class="header-title">
-    <div class="header-box">
-      アイコン的な画像を挿入する場合はここにimgタグを入力してください
-    </div>
-    <div class="header-name">
-      <h1 class="header-name-wrapp">
-        <span class="header-name-wrapp-ja">
-          この箇所に研究室名や個人名を入力してください
-        </span>
-        <span class="header-name-wrapp-en">
-          この箇所に研究室名や個人名の英訳を入力してください
-        </span>
-      </h1>
-    </div>
-  </a>
-  <button id="burger" class="is-sp" type="button">
-    <span class="header-burger"></span>
-    <span class="header-burger"></span>
-    <span class="header-burger"></span>
-  </button>
-</div>
+- [完成サンプルを開く](./sample.html)
+- [利用開始用ページを開く](./index.html)
+
+`sample.html`は、すべてのセクション、長文、空データ、「もっと見る」の件数境界を確認する完成見本です。`index.html`は自分の研究室情報を入力する正本です。
+
+GitHub Pagesのプロジェクトサイトでは、完成サンプルの想定URLは次の形です。
+
+```text
+https://ユーザー名.github.io/リポジトリ名/sample.html
 ```
 
-### グローバルメニューについて
+## 3. 対象者
 
-グローバルメニューはメインコンテンツのセクションに付随する data 属性から Javascritp 側で動的に生成しています。ですので、`id="nav-list"` の部分は編集しないでください。
+- GitHubアカウントを作成できる方
+- GitHubの基本操作を学ぶ意思がある方
+- HTMLを手作業では編集できないが、ChatGPTとCodexを利用したい研究者・研究室
+- AIの出力と公開情報を自分で確認できる方
 
-#### 大学ロゴについて
+完全なPC初心者への個別導入支援や、無料の操作サポートは想定していません。
 
-所属する大学や組織のロゴマークがある場合、`logo-university` の a タグ内に img を挿入してください。
+## 4. できること
 
-```html
-<!-- START グローバルナビ -->
-<nav id="g-nav">
-  <div class="nav-inner">
-    <p>Menu</p>
-    <div id="nav-list"></div>
-    <div class="logo-university">
-      <a href="https://example.com" target="_blank" rel="noopener noreferrer">
-        ここに所属する大学のロゴ画像をimgタグで入力してください。
-      </a>
-    </div>
-  </div>
-  <span class="overlay"></span>
-</nav>
-<!-- END グローバルナビ -->
+- 研究室名、所属、プロフィール、経歴等の変更
+- NEWS、研究テーマ、メンバー、OB・OG、論文、発表、書籍等の追加・削除
+- 画像、ロゴ、OGP、faviconの差し替え
+- セクションの表示・非表示と並べ替え
+- 色、フォント、余白、角丸、罫線等のデザイン調整
+- 既存構造内の軽微なレイアウト変更
+- GitHub Pagesでの静的サイト公開
+
+## 5. 想定範囲外のこと
+
+CMS、データベース、認証、外部API連携、論文情報の自動同期、問い合わせフォーム送信、管理画面、大規模な複数ページサイト、高度なアニメーション、EC、決済等は想定範囲外です。
+
+利用者が自力で追加することは禁止しませんが、このテンプレートの検証・サポート対象ではありません。
+
+## 6. ChatGPTとCodexの役割
+
+ChatGPTは、研究室資料の整理、公開用原稿、Codexへ渡す依頼文の作成に使います。Codexは、リポジトリ内のファイル変更、ブラウザ確認、テスト、Gitのcommitとpushに使います。
+
+GitHubはファイルと変更履歴を保管・共有するサービスです。branchは公開用の内容と作業中の内容を分ける作業線、commitは変更をひとまとまりで記録する操作、pushはその記録をGitHub上のremote（保存先）へ送る操作です。
+
+Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から継続的な作業規則を読みます。`prompts/`のMarkdownは、目的別に内容を入力してCodexへ貼り付ける依頼テンプレートです。Codexのスラッシュコマンドではありません。
+
+研究実績、所属、肩書、論文、受賞等をAIに推測させないでください。未公開情報、個人情報、APIキー、認証情報を安易に入力しないでください。
+
+## 7. 最短の開始手順
+
+1. GitHub上で自分用のリポジトリを用意します。
+2. Codexでそのリポジトリを開きます。
+3. [初期カスタマイズ用プロンプト](./prompts/INITIAL_CUSTOMIZATION.md)の入力欄へ、確認済みの研究室情報を貼ります。
+4. プロンプト全体をCodexへ渡します。
+5. Codexの変更報告、ブラウザ表示、commit内容を人が確認します。
+6. [公開前確認用プロンプト](./prompts/PRE_PUBLISH_REVIEW.md)で検査します。
+7. 問題がなければGitHub Pagesを設定します。
+
+詳しい手順は[はじめ方](./docs/GETTING_STARTED.md)を参照してください。
+
+## 8. ファイル構成
+
+| ファイル | 役割 |
+|---|---|
+| `index.html` | 利用者が自分の研究室サイトとして編集する正本 |
+| `sample.html` | 完成見本、件数境界、回帰試験用 |
+| `AGENTS.md` | Codexが守るリポジトリ固有ルール |
+| `DESIGN.md` | 現行デザイン仕様と変更希望の記入欄 |
+| `assets/css/theme.css` | 色、フォント、主要余白等の変更頻度が高い値 |
+| `assets/css/style.css` | レイアウトとコンポーネント実装 |
+| `assets/js/script.js` | ナビ、Swiper、「もっと見る」、コピー等の機能 |
+| `prompts/` | 目的別のCodex依頼テンプレート |
+| `docs/` | 詳細な利用・公開・安全文書 |
+
+## 9. 初期カスタマイズ
+
+[INITIAL_CUSTOMIZATION.md](./prompts/INITIAL_CUSTOMIZATION.md)へ、研究室名、所属、研究テーマ、メンバー、プロフィール、論文、NEWS、Contact、画像等を入力し、Codexへ渡してください。
+
+入力資料にない事実は空欄またはプレースホルダーのままにします。実在しそうな情報をAIに補完させないでください。
+
+## 10. デザイン変更
+
+[DESIGN.md](./DESIGN.md)の「21. デザイン変更指示」だけを編集し、[APPLY_DESIGN.md](./prompts/APPLY_DESIGN.md)をCodexへ渡します。
+
+`DESIGN.md`を書き換えただけでは表示は変わりません。Codexが変更指示を読み、まず`theme.css`で対応し、必要な場合だけ`style.css`やHTMLを変更します。
+
+## 11. 日常更新
+
+- NEWS追加: [ADD_NEWS.md](./prompts/ADD_NEWS.md)
+- メンバー更新: [UPDATE_MEMBERS.md](./prompts/UPDATE_MEMBERS.md)
+- 論文・発表追加: [ADD_PUBLICATION.md](./prompts/ADD_PUBLICATION.md)
+- セクション変更: [REORDER_OR_REMOVE_SECTION.md](./prompts/REORDER_OR_REMOVE_SECTION.md)
+
+一度の依頼を小さくし、1つのcommitで内容を確認しやすくすることを推奨します。
+
+## 12. 公開前確認
+
+[PRE_PUBLISH_REVIEW.md](./prompts/PRE_PUBLISH_REVIEW.md)を使い、サンプル文言、プレースホルダー、論文・受賞・所属の正確性、個人情報、404、PC/SP表示、Contactコピー、帰属表示等を確認します。
+
+事実関係、掲載許可、画像の権利は自動検査だけでは判断できません。研究代表者または公開責任者が確認してください。
+
+## 13. GitHub Pagesでの公開
+
+基本設定は次のとおりです。
+
+```text
+Settings
+→ Pages
+→ Build and deployment
+→ Source: Deploy from a branch
+→ Branch: main
+→ Folder: /(root)
 ```
 
-## メインコンテンツ
+このテンプレートはビルド工程が不要なので、branchのルートから公開できます。作業branch上の変更は、`main`へ統合するまで通常の公開元には反映されません。
 
-### ヘッダー画像について
+最新の画面や条件は[GitHub公式の公開元設定](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)を確認してください。詳しくは[GitHub Pages公開手順](./docs/PUBLISH_WITH_GITHUB_PAGES.md)にまとめています。
 
-掲載権限を確認した画像を用意し、`src` と `alt` を編集してください。
-画面幅ごとに画像を変更する場合は、必要に応じて `source` 要素を追加してください。
+## 14. 利用条件と帰属表示
 
-```html
-<!-- START メインビジュアル -->
-<div class="mv">
-  <picture class="mv">
-    <img
-      src="./assets/images/sample-mv.png"
-      alt="研究室で実験装置を操作する様子（サンプル画像）"
-    />
-  </picture>
-</div>
-<!-- END メインビジュアル -->
+無料利用時は、フッターの株式会社アカデメイアの帰属表示と、次のサービスリンクを維持してください。
+
+```text
+https://www.academeia15.co.jp/web-template
 ```
 
-### セクションについて
+帰属表示の削除には、別途有償の削除許諾が必要です。非表示、判読不能化、別URLへの変更も行わないでください。詳しくは[LICENSE.md](./LICENSE.md)を確認してください。
 
-各コンテンツセクションは `data-title=""` と `id=""` の中を項目に応じて編集してください。<br>
+## 15. 無保証・無償サポートなし
 
-- `data-title` はグローバルメニューの項目名
-- `id` はアンカーリンク<br>
+このテンプレートは現状有姿で提供され、動作、正確性、継続提供、特定用途への適合を保証しません。利用、改変、公開、掲載内容の確認は利用者自身の責任です。
 
-になります。
+無償の個別導入、設定、カスタマイズ、トラブル対応は提供しません。不具合報告や改善提案を受け付ける場合でも、返信、調査、修正、採用を保証しません。詳しくは[SUPPORT.md](./SUPPORT.md)を確認してください。
 
-```html
-<section
-  data-accordion="normal"
-  data-class="nav-default"
-  data-title="NEWS"
-  id="news"
-  class="scroll-point"
-></section>
-```
+## 16. 有償サービス
 
-論文セクションの場合は`data-accordion` の中身が"normal"ではなく、"nav-drop"になっていることを確認してください。
+個別の導入、設定、カスタマイズ、更新支援、帰属表示削除許諾については、[アカデメイアの研究室HPテンプレート解説ページ](https://www.academeia15.co.jp/web-template)から相談できます。提供内容、料金、契約成立は個別に確認してください。
 
-```html
-<section
-  data-accordion="nav-drop"
-  data-class="nav-default"
-  data-title="論文・研究発表"
-  id="academic"
-  class="scroll-point"
-></section>
-```
+## 17. 詳細文書
 
-### NEWS セクションについて
-
-ニュースの一覧は下記 li タグを複製して日付、タイトル、外部リンクがある場合は URL を入力してください。<br>
-外部リンクが無い場合は`is-link` クラスを削除してください。
-
-```html
-<li class="news-item is-link" data-more="">
-  <div class="news-date">20XX.04.01</div>
-  <div class="news-text">
-    <div class="news-title">
-      ［学年］の［メンバー名］が［発表会名］で研究成果を発表しました。（サンプル）
-    </div>
-    <a
-      href="https://example.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="link"
-      >記事を見る<span class="ico"
-        ><svg viewBox="0 0 14 12">
-          <use
-            xlink:href="./assets/images/ico/splite.svg#ico-link"
-          ></use></svg></span
-    ></a>
-  </div>
-</li>
-```
-
-### 研究テーマセクションについて
-
-見出し、内容、画像があれば画像を入力してください。
-リストのナンバリングは css 側で自動的に付与されます。
-
-```html
-<li class="theme-item">
-  <h3 class="h3-number">研究テーマ名（サンプル）</h3>
-  <div class="theme-body">
-    <p>
-      ここには研究の背景、目的、独自性を入力します。この文章は表示確認用のサンプルです。
-    </p>
-    <div class="theme-img">
-      <picture>
-        <img
-          src="./assets/images/sample-ph-01.png"
-          alt="木になった果実（サンプル画像）"
-        />
-      </picture>
-      <picture>
-        <img src="./assets/images/sample-ph-02.png" alt="イチジク（サンプル画像）"
-      /></picture>
-    </div>
-    <p>
-      ここには研究方法、期待される成果、社会への応用可能性などを入力します。（サンプル）
-    </p>
-  </div>
-</li>
-```
-
-### 研究室のモットーセクションについて
-
-見出し本文を入力してください。
-
-```html
-<li>
-  <h3>美容整形を通して世界を知る</h3>
-  <p>
-    一人ひとりをかけがえのない存在として大切にする。これがイエス・高津研究室の中心にあるメッセージです。人権や世界平和などさまざまな問題のルーツにあるキリスト教の影響を知ること、書籍、絵画、彫刻、映画などの芸術作品の背景にある聖書を学ぶことで、世界を、美を、そして一人ひとりの人生をより広く深く理解することができます。
-  </p>
-</li>
-```
-
-### 研究室メンバーセクションについて
-
-h4 に大項目、p にメンバーの名前を入力してください。<br>
-リストの 2 番目以降は非表示になり、もっと見るボタンで表示する形式になります。
-
-```html
-<li class="member-li-wrapp" data-more="">
-  <h4>博士後期課程</h4>
-  <ul class="member-li">
-    <li class="member-name-li">
-      <div class="member-name">
-        <p>［博士後期課程3年 氏名］</p>
-        <p>［博士後期課程2年 氏名］</p>
-        <p>［博士後期課程1年 氏名］</p>
-      </div>
-    </li>
-  </ul>
-</li>
-```
-
-### プロフィールセクションについて
-
-画像、外部リンクがあれば URL、略歴を入力してください。
-
-```html
-<!-- 氏名・役職・画像欄 -->
-<div>
-  <div class="profile-info-text-wrapp">
-    <p class="profile-info-position">役職（サンプル）</p>
-    <div class="profile-info-name">
-      <p class="profile-info-name-ja">研究者名（サンプル）</p>
-      <p>Researcher Name (Sample)</p>
-    </div>
-  </div>
-  <div class="profile-info-link-wrapp is-link">
-    <a
-      href="https://example.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="link"
-      >研究者紹介ページ<span class="ico"
-        ><svg viewBox="0 0 14 12">
-          <use
-            xlink:href="./assets/images/ico/splite.svg#ico-link"
-          ></use></svg></span
-    ></a>
-    <a
-      href="https://example.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="link"
-      >研究業績ページ<span class="ico"
-        ><svg viewBox="0 0 14 12">
-          <use
-            xlink:href="./assets/images/ico/splite.svg#ico-link"
-          ></use></svg></span
-    ></a>
-  </div>
-</div>
-
-<!-- 略歴 -->
-<ul class="profile-history-wrapp">
-  <li>
-    <h4>経歴</h4>
-    <ul class="profile-history-li">
-      <li class="profile-history-text-wrapp">
-        <p class="profile-history-year">20XX</p>
-        <div class="profile-history-text">
-          <p>［学歴・経歴を入力してください］（サンプル）</p>
-        </div>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <h4>受賞歴</h4>
-    <ul class="profile-history-li">
-      <li class="profile-history-text-wrapp">
-        <p class="profile-history-year">20XX</p>
-        <div class="profile-history-text">
-          <p>［受賞歴を入力してください］（サンプル）</p>
-        </div>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <h4>所属学会</h4>
-    <ul class="profile-history-li">
-      <li class="profile-history-text-wrapp">
-        <div class="profile-history-text">
-          <p>［所属学会を入力してください］（サンプル）</p>
-        </div>
-      </li>
-    </ul>
-  </li>
-</ul>
-```
-
-### 論文研究発表セクションについて
-
-タブの編集は下記箇所を編集してください。`data-index=`はグローバルナビのアコーディオンに出現する部分になりますので、忘れずにこちらも入力してください。
-
-```html
-<div class="swiper-wrapper tab-wrapp">
-  <div class="swiper-slide" data-index="論文誌">論文誌</div>
-  <div class="swiper-slide" data-index="学会発表">学会発表</div>
-  <div class="swiper-slide" data-index="外部記事">外部記事</div>
-  <div class="swiper-slide" data-index="書籍">書籍</div>
-  <div class="swiper-slide" data-index="その他">その他</div>
-</div>
-```
-
-タブの中身は下記の`swiper-slide` を複製して適宜編集してください。
-
-```html
-<div class="swiper mySwiper2">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <ul class="paper">
-        <li class="list-item is-link">
-          論文タイトル（サンプル）
-          <span>
-            <a
-              class="link"
-              href="https://example.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              外部リンク
-              <span class="ico">
-                <svg viewBox="0 0 14 12">
-                  <use
-                    xlink:href="./assets/images/ico/splite.svg#ico-link"
-                  ></use>
-                </svg>
-              </span>
-            </a>
-          </span>
-        </li>
-      </ul>
-      <button class="load-more" type="button">
-        <svg viewBox="0 0 13 3">
-          <use xlink:href="./assets/images/ico/splite.svg#ico-more"></use></svg
-        >もっと見る
-      </button>
-    </div>
-    <div class="swiper-slide">
-      <!-- ul から同様の中身 -->
-    </div>
-    <div class="swiper-slide">
-      <!-- ul から同様の中身 -->
-    </div>
-  </div>
-</div>
-```
-
-### Contact セクションについて
-
-問い合わせのメールアドレスは`value=`の中にアドレスを入力してください。
-
-```html
-<!-- メールアドレス -->
-<input id="tagText" type="text" value="contact@example.com" hidden readonly />
-```
-
-地図を掲載する場合は、下記のサンプル表示を研究室自身の Google Maps
-埋め込みコードへ置き換えてください。
-
-```html
-<!-- 公開前に、ここを研究室自身のGoogle Maps埋め込みコードへ置き換えてください。 -->
-<div class="googlemap googlemap-placeholder" role="note">
-  地図は未設定です。公開前に研究室の地図を設定してください。
-</div>
-```
-
-## その他
-
-### meta 情報について
-
-head 内を適宜変更してください。
-
-```html
-<title>研究者WEBサイトテンプレート</title>
-<meta name="description" content="研究者WEBサイトテンプレート" />
-<link rel="icon" href="./assets/images/common/favicon.ico" sizes="any" />
-<!-- 32×32 -->
-<link rel="icon" href="./assets/images/common/icon.svg" type="image/svg+xml" />
-<link
-  rel="apple-touch-icon"
-  href="./assets/images/common/apple-touch-icon.png"
-/>
-<!-- 180×180 -->
-<!-- og -->
-<meta property="og:url" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="研究者WEBサイトテンプレート" />
-<meta property="og:image" content="./assets/images/common/ogp.jpg" />
-<meta property="og:description" content="研究者WEBサイトテンプレート" />
-<meta property="og:site_name" content="研究者WEBサイトテンプレート" />
-<meta property="og:locale" content="ja_JP" />
-<!-- x -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="" />
-<meta name="twitter:title" content="研究者WEBサイトテンプレート" />
-<meta name="twitter:description" content="研究者WEBサイトテンプレート" />
-<meta name="twitter:image" content="./assets/images/common/ogp.jpg" />
-<meta name="twitter:image:alt" content="研究者WEBサイトテンプレート" />
-<meta name="twitter:dnt" content="on" />
-```
+- [はじめ方](./docs/GETTING_STARTED.md)
+- [Codexでのカスタマイズ](./docs/CUSTOMIZE_WITH_CODEX.md)
+- [GitHub Pages公開手順](./docs/PUBLISH_WITH_GITHUB_PAGES.md)
+- [HTMLを手作業で編集する方法](./docs/MANUAL_EDITING.md)
+- [プライバシーと安全性](./docs/PRIVACY_AND_SAFETY.md)
+- [デザイン仕様](./DESIGN.md)
+- [利用条件](./LICENSE.md)
+- [サポート方針](./SUPPORT.md)
+- [第三者ライセンス](./THIRD_PARTY_NOTICES.md)
