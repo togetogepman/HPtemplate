@@ -5,38 +5,77 @@
     // @@@ 大学ロゴを違う要素に複製する
     const targetLogo = document.querySelector(".logo-university img");
     const targetLogoPcImg = document.querySelector(".logo-university-pc img");
-    const src = targetLogo.getAttribute("src");
-    if (targetLogo) {
+    const src = targetLogo ? targetLogo.getAttribute("src") : "";
+    if (targetLogoPcImg && src && src.trim()) {
       targetLogoPcImg.setAttribute("src", src);
+      targetLogoPcImg.setAttribute("alt", targetLogo.getAttribute("alt") || "");
     }
 
     // @@@@ コンテンツのセクションを見てグローバルナビに項目を生成
     const globalNav = document.getElementById("nav-list");
     const sections = document.querySelectorAll("section");
-    const dropLists = document.querySelectorAll(".tab-wrapp div");
+    const navEntries = [];
+
     function createGlobalNav() {
+      if (!globalNav) {
+        return;
+      }
+
       const navList = document.createElement("ul");
-      sections.forEach((section, index) => {
-        const sectionTitle = section.getAttribute("data-title");
-        const sectionUniqeClass = section.getAttribute("data-class");
+      const usedIds = new Set();
+
+      sections.forEach((section) => {
+        const sectionTitle = (section.getAttribute("data-title") || "").trim();
+        const sectionId = section.id.trim();
+        const sectionUniqueClass = section.getAttribute("data-class");
         const sectionIsAccordion = section.getAttribute("data-accordion");
+        const dropLists = section.querySelectorAll(".tab-wrapp [data-index]");
+
+        if (!sectionTitle || !sectionId || usedIds.has(sectionId)) {
+          return;
+        }
+        usedIds.add(sectionId);
 
         const navItem = document.createElement("li");
-        navItem.classList.add(sectionUniqeClass, sectionIsAccordion);
+        navItem.classList.add("nav-default");
+        if (sectionUniqueClass && sectionUniqueClass !== "nav-default") {
+          navItem.classList.add(sectionUniqueClass);
+        }
+
+        const hasAccordion =
+          sectionIsAccordion === "nav-drop" && dropLists.length > 0;
+        if (hasAccordion) {
+          navItem.classList.add("nav-drop");
+        }
+
         const link = document.createElement("a");
-        link.href = `#${section.id}`;
+        link.href = `#${sectionId}`;
         link.textContent = sectionTitle;
 
-        if (sectionIsAccordion === "nav-drop") {
+        if (hasAccordion) {
           const dropDiv = document.createElement("div");
           dropDiv.classList.add("nav-drop-main");
           dropDiv.appendChild(link);
 
           const dropdownImg = document.createElement("div");
-          dropdownImg.innerHTML =
-            '<img src="./assets/images/ico/no-farames/ico-dropdown.svg">';
+          const dropdownIcon = document.createElement("img");
+          dropdownIcon.src =
+            "./assets/images/ico/no-farames/ico-dropdown.svg";
+          dropdownIcon.alt = "";
+          dropdownImg.appendChild(dropdownIcon);
 
           const ul = document.createElement("ul");
+
+          dropLists.forEach((dropList, index) => {
+            const acoItem = document.createElement("li");
+            const acoHref = document.createElement("a");
+            acoHref.href = `#${sectionId}`;
+            acoHref.textContent =
+              dropList.getAttribute("data-index") || `項目${index + 1}`;
+            acoItem.setAttribute("data-slide", index);
+            acoItem.appendChild(acoHref);
+            ul.appendChild(acoItem);
+          });
 
           navItem.appendChild(dropDiv);
           dropDiv.appendChild(dropdownImg);
@@ -46,6 +85,7 @@
         }
 
         navList.appendChild(navItem);
+        navEntries.push({ section, navItem });
       });
 
       globalNav.appendChild(navList);
@@ -53,168 +93,83 @@
 
     createGlobalNav();
 
-    const hashTarget = document.querySelector(".nav-drop-main a");
-    const hash = hashTarget.getAttribute("href");
-
-    dropLists.forEach((dropList, index) => {
-      const accordionWrapp = document.querySelector(".nav-drop ul");
-      const acoItem = document.createElement("li");
-      const acoHref = document.createElement("a");
-      acoHref.href = hash;
-      acoHref.textContent = dropList.getAttribute("data-index");
-      acoItem.setAttribute("data-slide", index + 1);
-      acoItem.appendChild(acoHref);
-      accordionWrapp.appendChild(acoItem);
-    });
-
-    // @@@@@ windowリサイズ時にリロードをさせる
-    const breakPoint = 769;
-    let resizeFlag;
-    window.addEventListener(
-      "load",
-      () => {
-        if (breakPoint < window.innerWidth) {
-          resizeFlag = false;
-        } else {
-          resizeFlag = true;
-        }
-        resizeWindow();
-      },
-      false
-    );
-    const resizeWindow = () => {
-      window.addEventListener(
-        "resize",
-        () => {
-          if (breakPoint < window.innerWidth && resizeFlag) {
-            window.location.reload();
-            resizeFlag = false;
-          } else if (breakPoint >= window.innerWidth && !resizeFlag) {
-            resizeFlag = true;
-          }
-        },
-        false
-      );
-    };
-
     // バーガーメニュー
     const trigger = document.getElementById("burger");
     const nav = document.getElementById("g-nav");
     const navInner = document.querySelector(".nav-inner");
-    const closeTrigger = document.querySelectorAll("[data-close]");
     const lay = document.querySelector(".overlay");
     const body = document.body;
+    const windowSm = 768;
+    const menuReady = Boolean(trigger && nav && navInner && lay);
     let isOpen = false;
 
-    trigger.addEventListener("click", toggleMenu, false);
+    if (menuReady) {
+      trigger.addEventListener("click", toggleMenu, false);
+      lay.addEventListener("click", closeMenu, false);
+    }
 
     function toggleMenu() {
-      isOpen = !isOpen;
       if (isOpen) {
-        openMenu();
-      } else {
         closeMenu();
+      } else {
+        openMenu();
       }
-    }
-
-    function wait() {
-      body.classList.add("wait");
-    }
-    function able() {
-      body.classList.remove("wait");
-    }
-
-    function setDisplay() {
-      return new Promise((resolve) => {
-        nav.style.display = "block";
-        resolve();
-      });
-    }
-
-    function fadeIn() {
-      return new Promise((resolve) => {
-        lay.style.opacity = 1;
-        lay.addEventListener("transitionend", resolve, { once: true });
-      });
-    }
-
-    function moveHorizontally() {
-      return new Promise((resolve) => {
-        navInner.style.transition = navInner.style.transform =
-          "translate3d(0, 0, 0)";
-        navInner.addEventListener("transitionend", resolve, { once: true });
-      });
-    }
-
-    function moveNavInner() {
-      return new Promise((resolve) => {
-        navInner.style.transform = "translate3d(100%, 0, 0)";
-        navInner.addEventListener("transitionend", resolve, { once: true });
-      });
-    }
-
-    function fadeOutLay() {
-      return new Promise((resolve) => {
-        lay.style.opacity = 0;
-        lay.addEventListener("transitionend", resolve, { once: true });
-      });
-    }
-
-    function setNavDisplayNone() {
-      nav.style.display = "none";
-      return Promise.resolve();
-    }
-
-    function delay(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     function openMenu() {
+      if (!menuReady || window.innerWidth > windowSm) {
+        return;
+      }
+
       isOpen = true;
       body.style.overflow = "hidden";
       body.classList.add("nav-open");
-      setDisplay()
-        .then(wait)
-        .then(() => delay(200))
-        .then(fadeIn)
-        .then(moveHorizontally)
-        .then(() => {
-          able();
-        });
+      nav.style.display = "block";
+      trigger.setAttribute("aria-expanded", "true");
+      trigger.setAttribute("aria-label", "メニューを閉じる");
+
+      window.requestAnimationFrame(() => {
+        lay.style.opacity = "1";
+        navInner.style.transform = "translate3d(0, 0, 0)";
+      });
     }
 
     function closeMenu() {
+      if (!menuReady) {
+        return;
+      }
+
       isOpen = false;
-      body.style.overflow = null;
+      body.style.overflow = "";
       body.classList.remove("nav-open");
-      setDisplay()
-        .then(wait)
-        .then(moveNavInner)
-        .then(fadeOutLay)
-        .then(() => delay(200))
-        .then(setNavDisplayNone)
-        .then(() => {
-          able();
-        });
-    }
+      trigger.setAttribute("aria-expanded", "false");
+      trigger.setAttribute("aria-label", "メニューを開く");
+      lay.style.opacity = "0";
+      navInner.style.transform = "translate3d(100%, 0, 0)";
 
-    const spMenus = document.querySelectorAll(".nav-default a");
-    const windowSm = 768;
-
-    function closeMenuOnMobile() {
       if (window.innerWidth <= windowSm) {
-        spMenus.forEach((spMenu, i) => {
-          spMenu.addEventListener("click", function (event) {
-            if (isOpen) {
-              event.preventDefault();
-              closeMenu();
-            }
-          });
-        });
+        window.setTimeout(() => {
+          if (!isOpen) {
+            nav.style.display = "none";
+          }
+        }, 550);
       }
     }
-    window.addEventListener("resize", closeMenuOnMobile);
-    window.addEventListener("load", closeMenuOnMobile);
+
+    function syncMenuToViewport() {
+      if (!menuReady || window.innerWidth <= windowSm) {
+        return;
+      }
+
+      isOpen = false;
+      body.style.overflow = "";
+      body.classList.remove("nav-open");
+      nav.style.display = "";
+      navInner.style.transform = "";
+      lay.style.opacity = "";
+      trigger.setAttribute("aria-expanded", "false");
+      trigger.setAttribute("aria-label", "メニューを開く");
+    }
 
     // @@@@ ナビゲーションをセクションのスクロールと連動させてカレントを付け替える
     // 基準点の準備
@@ -224,13 +179,11 @@
     function PositionCheck() {
       // headerの高さを取得
       var header = document.getElementById("header");
-      var headerH = header.offsetHeight;
+      var headerH = header ? header.offsetHeight : 0;
 
-      // .scroll-pointクラスがついたエリアの位置を取得する設定
-      var scrollPoints = document.querySelectorAll(".scroll-point");
-      scrollPoints.forEach(function (point, i) {
-        var rect = point.getBoundingClientRect();
-        elemTop[i] = Math.round(rect.top + window.scrollY - headerH);
+      elemTop = navEntries.map(function (entry) {
+        var rect = entry.section.getBoundingClientRect();
+        return Math.round(rect.top + window.scrollY - headerH);
       });
     }
 
@@ -238,21 +191,27 @@
     function ScrollAnime() {
       // スクロール値を取得
       var scroll = Math.round(window.scrollY);
-      var navItems = document.querySelectorAll("#g-nav .nav-default");
 
       // 全てのナビゲーションの現在地クラスを除去
-      navItems.forEach(function (item) {
-        item.classList.remove("current");
+      navEntries.forEach(function (entry) {
+        entry.navItem.classList.remove("current");
       });
 
-      for (var i = 0; i < elemTop.length - 1; i++) {
-        if (scroll >= elemTop[i] && scroll < elemTop[i + 1]) {
-          navItems[i].classList.add("current");
+      if (elemTop.length === 0) {
+        return;
+      }
+
+      var currentIndex = -1;
+      for (var i = 0; i < elemTop.length; i++) {
+        if (scroll >= elemTop[i]) {
+          currentIndex = i;
+        } else {
           break;
         }
       }
-      if (scroll >= elemTop[elemTop.length - 1]) {
-        navItems[elemTop.length - 1].classList.add("current");
+
+      if (currentIndex >= 0 && navEntries[currentIndex]) {
+        navEntries[currentIndex].navItem.classList.add("current");
       }
     }
 
@@ -260,19 +219,30 @@
     var navLinks = document.querySelectorAll("#g-nav a");
     navLinks.forEach(function (link) {
       link.addEventListener("click", function (event) {
-        event.preventDefault();
         var elmHash = this.getAttribute("href");
+        if (!elmHash || !elmHash.startsWith("#") || elmHash.length === 1) {
+          return;
+        }
+
+        var target = document.getElementById(elmHash.slice(1));
+        if (!target) {
+          return;
+        }
+
+        event.preventDefault();
         var header = document.getElementById("header");
-        var headerH = header.offsetHeight;
+        var headerH = header ? header.offsetHeight : 0;
         var pos = Math.round(
-          document.querySelector(elmHash).getBoundingClientRect().top +
-            window.scrollY -
-            headerH
+          target.getBoundingClientRect().top + window.scrollY - headerH
         );
         window.scrollTo({
           top: pos,
           behavior: "smooth",
         });
+
+        if (isOpen && window.innerWidth <= windowSm) {
+          closeMenu();
+        }
       });
     });
 
@@ -286,7 +256,14 @@
     ScrollAnime();
 
     window.addEventListener("resize", function () {
+      syncMenuToViewport();
       PositionCheck();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && isOpen) {
+        closeMenu();
+      }
     });
 
     // @@@@@ アコーディオン
@@ -295,7 +272,11 @@
     accordionButtons.forEach((accordionBtn, index) => {
       accordionBtn.addEventListener("click", (e) => {
         const parentLi = e.target.closest("li");
-        const content = parentLi.querySelector("ul");
+        const content = parentLi ? parentLi.querySelector("ul") : null;
+        if (!parentLi || !content) {
+          return;
+        }
+
         const isOpen = parentLi.classList.toggle("is-active");
         if (isOpen) {
           content.style.height = "auto";
@@ -309,8 +290,14 @@
         }
         accordionButtons.forEach((btn, i) => {
           if (i !== index) {
-            btn.closest("li").classList.remove("is-active");
-            btn.nextElementSibling.style.height = "0";
+            const otherParent = btn.closest("li");
+            const otherContent = btn.nextElementSibling;
+            if (otherParent) {
+              otherParent.classList.remove("is-active");
+            }
+            if (otherContent) {
+              otherContent.style.height = "0";
+            }
           }
         });
         const container = parentLi.closest(".scroll-control");
@@ -321,143 +308,212 @@
     });
 
     // @@@@ タブスライド
-    var pvs;
-    var tabLength = document.querySelectorAll(".mySwiper .swiper-slide").length;
+    const tabSwiperElement = document.querySelector(".mySwiper");
+    const contentSwiperElement = document.querySelector(".mySwiper2");
+    const tabLength = tabSwiperElement
+      ? tabSwiperElement.querySelectorAll(".swiper-slide").length
+      : 0;
+    const contentSlideLength = contentSwiperElement
+      ? contentSwiperElement.querySelectorAll(".swiper-slide").length
+      : 0;
+    let swiper2 = null;
 
-    if (tabLength > 4) {
-      pvs = "4.5";
-    } else {
-      pvs = tabLength;
-    }
-
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: pvs,
-      watchSlidesProgress: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      on: {
-        init: () => {
-          const navLinks = document.querySelectorAll(".nav-drop ul li");
-          navLinks.forEach((link) => {
-            link.addEventListener("click", (event) => {
-              event.preventDefault();
-              const slideNumber = link.getAttribute("data-slide");
-              swiper2.slideTo(slideNumber - 1);
-            });
-          });
-          // moreボタン
+    if (
+      typeof Swiper === "function" &&
+      tabSwiperElement &&
+      contentSwiperElement &&
+      tabLength > 0 &&
+      contentSlideLength > 0
+    ) {
+      const swiper = new Swiper(tabSwiperElement, {
+        slidesPerView: tabLength > 4 ? 4.5 : tabLength,
+        watchSlidesProgress: true,
+        navigation: {
+          nextEl: tabSwiperElement.querySelector(".swiper-button-next"),
+          prevEl: tabSwiperElement.querySelector(".swiper-button-prev"),
         },
-      },
-    });
-    var swiper2 = new Swiper(".mySwiper2", {
-      spaceBetween: 10,
-      // autoHeight: true,
-      simulateTouch: false,
-      thumbs: {
-        swiper: swiper,
-      },
-    });
+      });
+
+      swiper2 = new Swiper(contentSwiperElement, {
+        spaceBetween: 10,
+        autoHeight: true,
+        simulateTouch: false,
+        thumbs: {
+          swiper: swiper,
+        },
+      });
+
+      const slideNavItems = document.querySelectorAll(
+        ".nav-drop ul li[data-slide]"
+      );
+      slideNavItems.forEach((slideNavItem) => {
+        slideNavItem.addEventListener("click", () => {
+          const slideNumber = Number(slideNavItem.getAttribute("data-slide"));
+          if (
+            Number.isInteger(slideNumber) &&
+            slideNumber >= 0 &&
+            slideNumber < contentSlideLength
+          ) {
+            swiper2.slideTo(slideNumber);
+          }
+        });
+      });
+    }
 
     const num = 6;
-    const swiperWrap = document.querySelectorAll(".swiper-slide");
+    const swiperWrap = document.querySelectorAll(".mySwiper2 .swiper-slide");
 
-    for (var i = 0; i < swiperWrap.length; i++) {
-      const swiperItemLists = swiperWrap[i].querySelectorAll(
-        ".swiper-slide ul li"
-      );
-      // listを一旦非表示
-      for (var e = num; e < swiperItemLists.length; e++) {
-        swiperItemLists[e].classList.add("is-hidden");
+    swiperWrap.forEach((slide) => {
+      const swiperItemLists = slide.querySelectorAll("ul li");
+      for (var i = num; i < swiperItemLists.length; i++) {
+        swiperItemLists[i].classList.add("is-hidden");
+        swiperItemLists[i].setAttribute("aria-hidden", "true");
       }
-    }
+    });
+
     const swiperBtns = document.querySelectorAll(".load-more");
-    swiperBtns.forEach((swiperBtn, i) => {
+    swiperBtns.forEach((swiperBtn) => {
+      const wrap = swiperBtn.parentElement
+        ? swiperBtn.parentElement.querySelector("ul")
+        : null;
+      if (!wrap) {
+        hideButton(swiperBtn, true);
+        return;
+      }
+
+      const liCount = wrap.querySelectorAll("li").length;
+      hideButton(swiperBtn, liCount <= num);
+
       swiperBtn.addEventListener("click", () => {
-        const wrap = swiperBtn.parentElement.querySelector("ul");
         const hiddenItems = wrap.querySelectorAll("li.is-hidden");
         for (var i = 0; i < num && i < hiddenItems.length; i++) {
           hiddenItems[i].classList.remove("is-hidden");
+          hiddenItems[i].classList.add("is-visible");
+          hiddenItems[i].removeAttribute("aria-hidden");
         }
         if (wrap.querySelectorAll("li.is-hidden").length === 0) {
-          swiperBtn.style.display = "none";
+          hideButton(swiperBtn, true);
         }
       });
-      const wrap = swiperBtn.parentElement.querySelector("ul");
-      const liCount = wrap.querySelectorAll("li").length;
-      if (liCount <= 10) {
-        swiperBtn.style.display = "none";
-      }
     });
 
-    setTimeout(() => {
-      swiper2.update();
-    }, 450);
+    if (swiper2) {
+      setTimeout(() => {
+        swiper2.update();
+      }, 450);
+    }
 
     // @@@@ もっと見るボタン
-    function setupMoreButton(sectionSelector, moreNum) {
+    function hideButton(button, shouldHide) {
+      button.classList.toggle("is-hidden", shouldHide);
+      button.hidden = shouldHide;
+    }
+
+    function setupMoreButton(sectionSelector, itemSelector, moreNum) {
       var section = document.querySelector(sectionSelector);
-      var listItems = section.querySelectorAll("[data-more]");
+      if (!section) {
+        return;
+      }
+
+      var listItems = section.querySelectorAll(itemSelector);
       var listBtn = section.querySelector(".more-btn");
+      if (!listBtn) {
+        return;
+      }
 
       for (var i = moreNum; i < listItems.length; i++) {
         listItems[i].classList.add("is-hidden");
+        listItems[i].setAttribute("aria-hidden", "true");
       }
 
+      hideButton(listBtn, listItems.length <= moreNum);
+
       listBtn.addEventListener("click", function () {
-        var hiddenItems = section.querySelectorAll("[data-more].is-hidden");
+        var hiddenItems = section.querySelectorAll(
+          `${itemSelector}.is-hidden`
+        );
 
         for (var i = 0; i < moreNum && i < hiddenItems.length; i++) {
           hiddenItems[i].classList.remove("is-hidden");
           hiddenItems[i].classList.add("is-visible");
-          hiddenItems[i].style.display = "block";
-          hiddenItems[i].style.opacity = 1;
+          hiddenItems[i].removeAttribute("aria-hidden");
         }
 
-        if (section.querySelectorAll("[data-more].is-hidden").length === 0) {
-          listBtn.style.display = "none";
+        if (section.querySelectorAll(`${itemSelector}.is-hidden`).length === 0) {
+          hideButton(listBtn, true);
         }
       });
-
-      var list = section.querySelectorAll(".list li").length;
-      if (list <= moreNum) {
-        listBtn.classList.add("is-hidden");
-      }
     }
 
-    if (document.getElementById("news")) {
-      setupMoreButton("#news", 3);
-    }
-    if (document.getElementById("member")) {
-      setupMoreButton("#member", 2);
-    }
+    setupMoreButton("#news", ".news-li-wrapp > [data-more]", 3);
+    setupMoreButton("#member", ".member-wrapp > [data-more]", 2);
 
     // @@@@@ メールのコピー
     const copyButton = document.getElementById("contact-btn");
     const tagText = document.getElementById("tagText");
     const message = document.getElementById("message");
 
-    copyButton.addEventListener("click", () => {
-      const tagValue = tagText.value;
-      copyToClipboard(tagValue);
-    });
+    if (copyButton && tagText) {
+      copyButton.addEventListener("click", () => {
+        const tagValue =
+          "value" in tagText ? tagText.value : tagText.textContent || "";
+        copyToClipboard(tagValue);
+      });
+    }
 
     async function copyToClipboard(tagValue) {
-      try {
-        if (navigator.clipboard) {
-          await navigator.clipboard.writeText(tagValue);
-        } else {
-          document.execCommand("copy");
-        }
+      let copied = false;
 
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText(tagValue);
+          copied = true;
+        } catch (error) {
+          copied = false;
+        }
+      }
+
+      if (!copied) {
+        copied = copyWithFallback(tagValue);
+      }
+
+      if (copied) {
         messageActive();
-      } catch (error) {
-        console.error("クリップボードへのコピーに失敗しました:", error);
+      } else {
+        console.error("クリップボードへのコピーに失敗しました。");
       }
     }
 
+    function copyWithFallback(tagValue) {
+      if (typeof document.execCommand !== "function") {
+        return false;
+      }
+
+      const textArea = document.createElement("textarea");
+      textArea.value = tagValue;
+      textArea.setAttribute("readonly", "");
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      textArea.style.pointerEvents = "none";
+      document.body.appendChild(textArea);
+      textArea.focus({ preventScroll: true });
+      textArea.select();
+      textArea.setSelectionRange(0, textArea.value.length);
+
+      let copied = false;
+      try {
+        copied = document.execCommand("copy");
+      } finally {
+        textArea.remove();
+      }
+      return copied;
+    }
+
     function messageActive() {
+      if (!message) {
+        return;
+      }
+
       message.classList.add("is-active");
       setTimeout(() => {
         message.classList.remove("is-active");

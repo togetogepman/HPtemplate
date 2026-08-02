@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -8,16 +9,15 @@
     <!-- 32×32 -->
     <link
       rel="icon"
-      href="./assets/images/common/icon.svg"
+      href="./assets/images/common/favicon.svg"
       type="image/svg+xml"
     />
     <link
       rel="apple-touch-icon"
-      href="./assets/images/common/apple-touch-icon.png"
+      href="./assets/images/common/apple_touch_icon.png"
     />
     <!-- 180×180 -->
     <!-- og -->
-    <meta property="og:url" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="研究者WEBサイトテンプレート" />
     <meta property="og:image" content="./assets/images/common/ogp.jpg" />
@@ -26,7 +26,6 @@
     <meta property="og:locale" content="ja_JP" />
     <!-- x -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="" />
     <meta name="twitter:title" content="研究者WEBサイトテンプレート" />
     <meta name="twitter:description" content="研究者WEBサイトテンプレート" />
     <meta name="twitter:image" content="./assets/images/common/ogp.jpg" />
@@ -39,44 +38,44 @@
     <!-- style sheet -->
     <link rel="stylesheet" href="./assets/css/destyle.css" />
     <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/simplebar@latest/dist/simplebar.css"
-    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- Javascript -->
-    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
     <script src="./assets/js/library.js"></script>
     <script src="./assets/js/script.js"></script>
   </head>
 
   <!-- START ここからデザインの要素を入れていく -->
-  <body>
+  <body id="top">
     <!-- START header -->
     <header id="header">
       <div class="header-contents">
-        <a href="#" class="header-title">
-          <div class="header-box"></div>
+        <a href="#top" class="header-title" aria-label="ページ先頭へ戻る">
+          <div class="header-box" aria-hidden="true"></div>
           <div class="header-name">
             <h1 class="header-name-wrapp">
               <span class="header-name-wrapp-ja"
-                >コミュニケーションデザインラボ - 佐藤研究室</span
+                >研究室名（サンプル）</span
               >
               <span class="header-name-wrapp-en"
-                >Communication Design Laboratory</span
+                >Laboratory Name (Sample)</span
               >
             </h1>
           </div>
         </a>
-        <button id="burger" class="is-sp" type="button">
+        <button
+          id="burger"
+          class="is-sp"
+          type="button"
+          aria-label="メニューを開く"
+          aria-controls="g-nav"
+          aria-expanded="false"
+        >
           <span class="header-burger"></span>
           <span class="header-burger"></span>
           <span class="header-burger"></span>
         </button>
       </div>
-      <div class="logo-university-pc is-pc">
-        <img src="" alt="" />
-      </div>
+      <div class="logo-university-pc is-pc" aria-hidden="true"></div>
     </header>
     <!-- END header -->
 
@@ -86,8 +85,14 @@
         <div class="nav-inner">
           <p>Menu</p>
           <div id="nav-list"></div>
-          <div class="logo-university">
-            <img src="assets/images/logo-university.svg"/>
+          <div
+            class="logo-university"
+            role="img"
+            aria-label="大学・組織ロゴの配置例"
+          >
+            <span class="logo-university-placeholder"
+              >大学・組織ロゴ<br />（サンプル）</span
+            >
           </div>
         </div>
         <span class="overlay"></span>
@@ -97,7 +102,10 @@
         <!-- START メインビジュアル -->
         <div class="mv">
           <picture class="mv">
-            <img src="./assets/images/sample-mv.png" alt="Example image" />
+            <img
+              src="./assets/images/sample-mv.png"
+              alt="研究室で実験装置を操作する様子（サンプル画像）"
+            />
           </picture>
         </div>
         <!-- END メインビジュアル -->
@@ -113,42 +121,47 @@
           <h2>研究テーマ</h2>
           <ul class="theme-wrapp">
             <li class="theme-item">
-              <h3 class="h3-number">ナゾの実の伝承を追う</h3>
-              <div class="theme-body">
-                <p>
-                  かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。
-                </p>
-                <div class="theme-img">
-                  <picture>
-
-                  <picture>
-                    <img src="./assets/images/sample-ph-02.png" alt="Example image"/></picture>
-                </div>
-                <p>
-                  かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。
-                </p>
-              </div>
-            </li>
-            <li class="theme-item">
-              <h3 class="h3-number">擬態の謎に迫る</h3>
-              <div class="theme-body">
-                <p>
-                  人類は蛇に化けた悪魔ルシファーの誘惑に負けたことによってエデンの園を追放されました。悪魔はなぜ蛇に擬態したのか？自由に擬態できるのであれば、アダムにはイブに、イブにはアダムになって誘惑したほうが疑われずに済んだのではないか？こうした疑問を解決すべく、当研究室では世界に散らばる擬態伝説と生物学的擬態の双方の観点から擬態の謎に迫ります。
-                </p>
-              </div>
-            </li>
-            <li class="theme-item">
               <h3 class="h3-number">
-                ナゾの実の伝承を追うナゾの実の伝承を追う
+                長い研究テーマ名の表示確認用サンプル：分野横断型データ解析による課題発見
               </h3>
               <div class="theme-body">
+                <p>
+                  ここには研究の背景、目的、独自性を入力します。この文章は長文レイアウトを確認するためのサンプルであり、実在する研究活動や組織との関係を示すものではありません。
+                </p>
                 <div class="theme-img">
                   <picture>
-                    <img src="./assets/images/sample-ph-01.png" alt="Example image" />
+                    <img
+                      src="./assets/images/sample-ph-02.png"
+                      alt="イチジク（サンプル画像）"
+                    />
                   </picture>
                 </div>
                 <p>
-                  かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。
+                  ここには研究方法、期待される成果、社会への応用可能性などを入力します。公開前に、共同研究先や研究対象の名称を掲載してよいか確認してください。
+                </p>
+              </div>
+            </li>
+            <li class="theme-item">
+              <h3 class="h3-number">研究テーマ名（サンプル2）</h3>
+              <div class="theme-body">
+                <p>
+                  研究テーマの概要を入力してください。専門外の閲覧者にも伝わる言葉で、対象と目的を簡潔に説明するための入力例です。
+                </p>
+              </div>
+            </li>
+            <li class="theme-item">
+              <h3 class="h3-number">研究テーマ名（サンプル3）</h3>
+              <div class="theme-body">
+                <div class="theme-img">
+                  <picture>
+                    <img
+                      src="./assets/images/sample-ph-01.png"
+                      alt="木になった果実（サンプル画像）"
+                    />
+                  </picture>
+                </div>
+                <p>
+                  研究テーマの説明を入力してください。画像を利用する場合は、掲載権限と代替テキストも確認してください。
                 </p>
               </div>
             </li>
@@ -167,112 +180,63 @@
           <h2>NEWS</h2>
           <ul class="news-li-wrapp">
             <li class="news-item" data-more="">
-              <div class="news-date">2023.10.05</div>
+              <div class="news-date">20XX.04.01</div>
               <div class="news-text">
                 <div class="news-title">
-                  全日本天使・悪魔対抗弁論大会で当研究室のミハイル・ゴルバチョフ君が優秀天使賞を受賞しました。
+                  研究室ウェブサイトのサンプルを公開しました。
                 </div>
-                <a href="#" target="_blank" class="link"
-                  >記事を見る<span class="ico"
-                    ><svg viewBox="0 0 14 12">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-link"
-                      ></use></svg></span
-                ></a>
               </div>
             </li>
-            <li class="news-item is-link" data-more="">
-              <div class="news-date">2023.10.05</div>
+            <li class="news-item" data-more="">
+              <div class="news-date">20XX.03.15</div>
               <div class="news-text">
                 <div class="news-title">
-                  全日本天使・悪魔対抗弁論大会で当研究室のミハイル・ゴルバチョフ君が優秀天使賞を受賞しました。
+                  ［学年］の［メンバー名］が［発表会名］で研究成果を発表しました。（サンプル）
                 </div>
-                <a href="#" target="_blank" class="link"
-                  >記事を見る<span class="ico"
-                    ><svg viewBox="0 0 14 12">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-link"
-                      ></use></svg></span
-                ></a>
               </div>
             </li>
-            <li class="news-item is-link" data-more="">
-              <div class="news-date">2023.10.05</div>
+            <li class="news-item" data-more="">
+              <div class="news-date">20XX.02.20</div>
               <div class="news-text">
                 <div class="news-title">
-                  全日本天使・悪魔対抗弁論大会で当研究室のミハイル・ゴルバチョフ君が優秀天使賞を受賞しました。
+                  ［研究テーマ］に関する活動報告を掲載しました。（サンプル）
                 </div>
-                <a href="#" target="_blank" class="link"
-                  >記事を見る<span class="ico"
-                    ><svg viewBox="0 0 14 12">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-link"
-                      ></use></svg></span
-                ></a>
               </div>
             </li>
-            <li class="news-item is-link" data-more="">
-              <div class="news-date">2023.10.05</div>
+            <li class="news-item" data-more="">
+              <div class="news-date">20XX.01.30</div>
               <div class="news-text">
                 <div class="news-title">
-                  全日本天使・悪魔対抗弁論大会で当研究室のミハイル・ゴルバチョフ君が優秀天使賞を受賞しました。
+                  ［イベント名］を開催します。詳細情報をここに入力してください。（サンプル）
                 </div>
-                <a href="#" target="_blank" class="link"
-                  >記事を見る<span class="ico"
-                    ><svg viewBox="0 0 14 12">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-link"
-                      ></use></svg></span
-                ></a>
               </div>
             </li>
-            <li class="news-item is-link" data-more="">
-              <div class="news-date">2023.10.05</div>
+            <li class="news-item" data-more="">
+              <div class="news-date">20XX.01.10</div>
               <div class="news-text">
                 <div class="news-title">
-                  全日本天使・悪魔対抗弁論大会で当研究室のミハイル・ゴルバチョフ君が優秀天使賞を受賞しました。
+                  ［募集内容］の受付を開始しました。（サンプル）
                 </div>
-                <a href="#" target="_blank" class="link"
-                  >記事を見る<span class="ico"
-                    ><svg viewBox="0 0 14 12">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-link"
-                      ></use></svg></span
-                ></a>
               </div>
             </li>
-            <li class="news-item is-link" data-more="">
-              <div class="news-date">2023.10.05</div>
+            <li class="news-item" data-more="">
+              <div class="news-date">20XX.12.15</div>
               <div class="news-text">
                 <div class="news-title">
-                  全日本天使・悪魔対抗弁論大会で当研究室のミハイル・ゴルバチョフ君が優秀天使賞を受賞しました。
+                  ［公開資料名］を更新しました。（サンプル）
                 </div>
-                <a href="#" target="_blank" class="link"
-                  >記事を見る<span class="ico"
-                    ><svg viewBox="0 0 14 12">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-link"
-                      ></use></svg></span
-                ></a>
               </div>
             </li>
-            <li class="news-item is-link" data-more="">
-              <div class="news-date">2023.10.05</div>
+            <li class="news-item" data-more="">
+              <div class="news-date">20XX.11.01</div>
               <div class="news-text">
                 <div class="news-title">
-                  全日本天使・悪魔対抗弁論大会で当研究室のミハイル・ゴルバチョフ君が優秀天使賞を受賞しました。
+                  過去のお知らせをここに入力してください。（サンプル）
                 </div>
-                <a href="#" target="_blank" class="link"
-                  >記事を見る<span class="ico"
-                    ><svg viewBox="0 0 14 12">
-                      <use
-                        xlink:href="./assets/images/ico/splite.svg#ico-link"
-                      ></use></svg></span
-                ></a>
               </div>
             </li>
           </ul>
-          <button class="more-btn">
+          <button class="more-btn" type="button">
             <svg viewBox="0 0 13 3">
               <use xlink:href="./assets/images/ico/splite.svg#ico-more"></use>
             </svg>
@@ -292,15 +256,15 @@
           <h2>研究室のモットー</h2>
           <ul class="motto-wrapp">
             <li>
-              <h3>美容整形を通して世界を知る</h3>
+              <h3>好奇心を大切にする（サンプル）</h3>
               <p>
-                一人ひとりをかけがえのない存在として大切にする。これがイエス・高津研究室の中心にあるメッセージです。人権や世界平和などさまざまな問題のルーツにあるキリスト教の影響を知ること、書籍、絵画、彫刻、映画などの芸術作品の背景にある聖書を学ぶことで、世界を、美を、そして一人ひとりの人生をより広く深く理解することができます。
+                ここには研究室が大切にしている考え方を入力します。この文章は表示確認用のサンプルです。
               </p>
             </li>
             <li>
-              <h3>対話を重ね、相手を知る</h3>
+              <h3>互いの視点を尊重する（サンプル）</h3>
               <p>
-                学生・教授間の距離が近く、活発な会話が行われる環境が特徴。日常におけるコミュニケーションや平和学などの授業を通して、対話において「相手を受け入れること」の大切さを知り、キリスト教の視点から近代社会へのアプローチを試みるうえで、「対話」が重要なキーワードであることを学びます。
+                研究室の雰囲気や、日々の活動で重視している姿勢を説明するための入力例です。
               </p>
             </li>
           </ul>
@@ -322,9 +286,9 @@
               <ul class="member-li">
                 <li class="member-name-li">
                   <div class="member-name">
-                    <p>Zlatan Ibrahimović (3年)</p>
-                    <p>遠山 金四郎 (2年)</p>
-                    <p>Mikhail Sergeevich Gorbachev (1年)</p>
+                    <p>［博士後期課程3年 氏名］</p>
+                    <p>［博士後期課程2年 氏名］</p>
+                    <p>［博士後期課程1年 氏名］</p>
                   </div>
                 </li>
               </ul>
@@ -334,8 +298,8 @@
               <ul class="member-li">
                 <li class="member-name-li">
                   <div class="member-name">
-                    <p>久慈 鯨 (2年)</p>
-                    <p>山下 奉文 (1年)</p>
+                    <p>［博士前期課程2年 氏名］</p>
+                    <p>［博士前期課程1年 氏名］</p>
                   </div>
                 </li>
               </ul>
@@ -344,23 +308,23 @@
               <h4>OB / OG</h4>
               <ul class="member-li">
                 <li class="member-name-li">
-                  <p class="member-year">1978年度</p>
+                  <p class="member-year">20XX年度</p>
                   <div class="member-name">
-                    <p>倉敷 蔵之介 (メディカルサーチ株式会社)</p>
-                    <p>森 透 (産業技術総合研究所)</p>
+                    <p>［氏名］（［進路・所属先］）</p>
+                    <p>［氏名］（［進路・所属先］）</p>
                   </div>
                 </li>
                 <li class="member-name-li">
-                  <p class="member-year">1979年度</p>
+                  <p class="member-year">20XX年度</p>
                   <div class="member-name">
-                    <p>吉田 等 (イラン大使館)</p>
-                    <p>柴田 勝家 (織田組)</p>
+                    <p>［氏名］（［進路・所属先］）</p>
+                    <p>［氏名］（［進路・所属先］）</p>
                   </div>
                 </li>
               </ul>
             </li>
           </ul>
-          <button class="more-btn">
+          <button class="more-btn" type="button">
             <svg viewBox="0 0 13 3">
               <use
                 xlink:href="./assets/images/ico/splite.svg#ico-more"
@@ -381,32 +345,24 @@
           <h2>プロフィール</h2>
           <div class="profile-wrapp">
             <div class="profile-info-wrapp">
-              <picture>
-                <img src="./assets/images/sample-profile.png" alt="Example image" />
-              </picture>
+              <div
+                class="profile-image-placeholder"
+                role="img"
+                aria-label="プロフィール画像のサンプル表示"
+              >
+                プロフィール画像<br />（サンプル）
+              </div>
               <div>
                 <div class="profile-info-text-wrapp">
-                  <p class="profile-info-position">教授</p>
+                  <p class="profile-info-position">役職（サンプル）</p>
                   <div class="profile-info-name">
-                    <p class="profile-info-name-ja">佐藤 太郎</p>
-                    <p>Sato Taro</p>
+                    <p class="profile-info-name-ja">研究者名（サンプル）</p>
+                    <p>Researcher Name (Sample)</p>
                   </div>
                 </div>
-                <div class="profile-info-link-wrapp is-link">
-                  <a href="#" target="_blank" class="link"
-                    >東京大学研究者紹介<span class="ico"
-                      ><svg viewBox="0 0 14 12">
-                        <use
-                          xlink:href="./assets/images/ico/splite.svg#ico-link"
-                        ></use></svg></span
-                  ></a>
-                  <a href="#" target="_blank" class="link"
-                    >Google Scholar<span class="ico"
-                      ><svg viewBox="0 0 14 12">
-                        <use
-                          xlink:href="./assets/images/ico/splite.svg#ico-link"
-                        ></use></svg></span
-                  ></a>
+                <div class="profile-info-link-wrapp">
+                  <p>研究者紹介ページのURLを設定してください。</p>
+                  <p>研究業績ページのURLを設定してください。</p>
                 </div>
               </div>
             </div>
@@ -415,40 +371,39 @@
                 <h4>経歴</h4>
                 <ul class="profile-history-li">
                   <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">2023</p>
+                    <p class="profile-history-year">20XX</p>
                     <div class="profile-history-text">
-                      <p>天使大学医学部卒業 医師免許取得</p>
-                      <p>天使大学大学院医学研究科博士課程入学</p>
+                      <p>［学歴・経歴を入力してください］（サンプル）</p>
                     </div>
                   </li>
                   <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">2023</p>
+                    <p class="profile-history-year">20XX</p>
                     <div class="profile-history-text">
-                      <p>日本医師会入会</p>
+                      <p>［学歴・経歴を入力してください］（サンプル）</p>
                     </div>
                   </li>
                   <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">2023</p>
+                    <p class="profile-history-year">20XX</p>
                     <div class="profile-history-text">
-                      <p>天使大学医学部 准教授</p>
+                      <p>［学歴・経歴を入力してください］（サンプル）</p>
                     </div>
                   </li>
                   <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">2023</p>
+                    <p class="profile-history-year">20XX</p>
                     <div class="profile-history-text">
-                      <p>天使大学医学部 教授</p>
+                      <p>［学歴・経歴を入力してください］（サンプル）</p>
                     </div>
                   </li>
                   <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">2023</p>
+                    <p class="profile-history-year">20XX</p>
                     <div class="profile-history-text">
-                      <p>株式会社ヤオコー社外取締役</p>
+                      <p>［学歴・経歴を入力してください］（サンプル）</p>
                     </div>
                   </li>
                   <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">2023</p>
+                    <p class="profile-history-year">20XX</p>
                     <div class="profile-history-text">
-                      <p>天使大学医学部 学部長</p>
+                      <p>［学歴・経歴を入力してください］（サンプル）</p>
                     </div>
                   </li>
                 </ul>
@@ -457,15 +412,15 @@
                 <h4>受賞歴</h4>
                 <ul class="profile-history-li">
                   <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">2023</p>
+                    <p class="profile-history-year">20XX</p>
                     <div class="profile-history-text">
-                      <p>ヨーロピアンシュガーコーン賞受賞</p>
+                      <p>［受賞歴を入力してください］（サンプル）</p>
                     </div>
                   </li>
                   <li class="profile-history-text-wrapp">
-                    <p class="profile-history-year">2023</p>
+                    <p class="profile-history-year">20XX</p>
                     <div class="profile-history-text">
-                      <p>紫綬褒章受章</p>
+                      <p>［受賞歴を入力してください］（サンプル）</p>
                     </div>
                   </li>
                 </ul>
@@ -475,9 +430,8 @@
                 <ul class="profile-history-li">
                   <li class="profile-history-text-wrapp">
                     <div class="profile-history-text">
-                      <p>日本医学会</p>
-                      <p>国際形成外科学会</p>
-                      <p>国際形成外科学会</p>
+                      <p>［所属学会を入力してください］（サンプル）</p>
+                      <p>［所属学会を入力してください］（サンプル）</p>
                     </div>
                   </li>
                 </ul>
@@ -497,7 +451,7 @@
         >
           <h2>論文・研究発表</h2>
           <div class="academic-inner">
-            <div thumbsSlider="" class="swiper mySwiper tab">
+            <div class="swiper mySwiper tab">
               <div class="swiper-wrapper tab-wrapp">
                 <div class="swiper-slide" data-index="論文誌">論文誌</div>
                 <div class="swiper-slide" data-index="学会発表">学会発表</div>
@@ -542,72 +496,19 @@
             </div>
             <div class="swiper mySwiper2">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" data-simplebar="">
+                <div class="swiper-slide">
                   <ul class="paper num">
-                    <li class="list-item is-link">
-                      小林由弥, 鈴木雅大, 松尾豊:
-                      深層生成モデルによる背景情報を利用したシーン解釈,
-                      人工知能学会論文誌, 第38巻3号, (2023).<span
-                        ><a class="link" href="#" target="_blank"
-                          >外部リンク<span class="ico"
-                            ><svg viewBox="0 0 14 12">
-                              <use
-                                xlink:href="./assets/images/ico/splite.svg#ico-link"
-                              ></use></svg></span></a
-                      ></span>
-                    </li>
-
+                    <li class="list-item">論文タイトル（サンプル1）</li>
+                    <li class="list-item">論文タイトル（サンプル2）</li>
+                    <li class="list-item">論文タイトル（サンプル3）</li>
+                    <li class="list-item">論文タイトル（サンプル4）</li>
+                    <li class="list-item">論文タイトル（サンプル5）</li>
+                    <li class="list-item">論文タイトル（サンプル6）</li>
                     <li class="list-item">
-                      Takeshi Kojima, Yusuke Iwasawa, Yutaka Matsuo:
-                      Robustifying Vision Transformer Without Retraining From
-                      Scratch Using Attention Based Test-Time Adaptation, New
-                      Generation Computing, (2022)<span
-                        ><a class="link" href="#" target="_blank"
-                          >外部リンク<span class="ico"
-                            ><svg viewBox="0 0 14 12">
-                              <use
-                                xlink:href="./assets/images/ico/splite.svg#ico-link"
-                              ></use></svg></span></a
-                      ></span>
+                      長い論文タイトルの折り返しを確認するための表示用テキスト（サンプル7）
                     </li>
-
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
-                    <li class="list-item">論文誌_リスト</li>
                   </ul>
-                  <button class="load-more">
+                  <button class="load-more" type="button">
                     <svg viewBox="0 0 13 3">
                       <use
                         xlink:href="./assets/images/ico/splite.svg#ico-more"
@@ -615,21 +516,16 @@
                     >もっと見る
                   </button>
                 </div>
-                <div class="swiper-slide" data-simplebar="">
+                <div class="swiper-slide">
                   <ul class="paper">
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
-                    <li class="list-item">学会発表_リスト</li>
+                    <li class="list-item">学会発表タイトル（サンプル1）</li>
+                    <li class="list-item">学会発表タイトル（サンプル2）</li>
+                    <li class="list-item">学会発表タイトル（サンプル3）</li>
+                    <li class="list-item">学会発表タイトル（サンプル4）</li>
+                    <li class="list-item">学会発表タイトル（サンプル5）</li>
+                    <li class="list-item">学会発表タイトル（サンプル6）</li>
                   </ul>
-                  <button class="load-more">
+                  <button class="load-more" type="button">
                     <svg viewBox="0 0 13 3">
                       <use
                         xlink:href="./assets/images/ico/splite.svg#ico-more"
@@ -637,21 +533,11 @@
                     >もっと見る
                   </button>
                 </div>
-                <div class="swiper-slide" data-simplebar="">
+                <div class="swiper-slide">
                   <ul class="paper">
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
-                    <li class="list-item">外部記事_リスト</li>
+                    <li class="list-item">外部記事タイトル（サンプル1）</li>
                   </ul>
-                  <button class="load-more">
+                  <button class="load-more" type="button">
                     <svg viewBox="0 0 13 3">
                       <use
                         xlink:href="./assets/images/ico/splite.svg#ico-more"
@@ -659,21 +545,10 @@
                     >もっと見る
                   </button>
                 </div>
-                <div class="swiper-slide" data-simplebar="">
-                  <ul class="paper">
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                    <li class="list-item">書籍_リスト</li>
-                  </ul>
-                  <button class="load-more">
+                <div class="swiper-slide">
+                  <ul class="paper"></ul>
+                  <p class="academic-empty">書籍情報を入力してください。（サンプル）</p>
+                  <button class="load-more" type="button">
                     <svg viewBox="0 0 13 3">
                       <use
                         xlink:href="./assets/images/ico/splite.svg#ico-more"
@@ -681,21 +556,17 @@
                     >もっと見る
                   </button>
                 </div>
-                <div class="swiper-slide" data-simplebar="">
+                <div class="swiper-slide">
                   <ul class="paper">
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
-                    <li class="list-item">その他_リスト</li>
+                    <li class="list-item">その他の研究活動（サンプル1）</li>
+                    <li class="list-item">その他の研究活動（サンプル2）</li>
+                    <li class="list-item">その他の研究活動（サンプル3）</li>
+                    <li class="list-item">その他の研究活動（サンプル4）</li>
+                    <li class="list-item">その他の研究活動（サンプル5）</li>
+                    <li class="list-item">その他の研究活動（サンプル6）</li>
+                    <li class="list-item">その他の研究活動（サンプル7）</li>
                   </ul>
-                  <button class="load-more">
+                  <button class="load-more" type="button">
                     <svg viewBox="0 0 13 3">
                       <use
                         xlink:href="./assets/images/ico/splite.svg#ico-more"
@@ -721,10 +592,9 @@
           <div class="contact-wrapp">
             <div class="contact-text-wrapp">
               <p class="contact-text">
-                「コミュニケーションデザインラボ -
-                佐藤研究室」では学生の研究生を募集しています。興味がある方はお気軽にご連絡ください。
+                ここには研究室への問い合わせ方法や、学生募集に関する案内を入力します。（サンプル）
               </p>
-              <span id="message">
+              <span id="message" role="status" aria-live="polite">
                 <span class="check">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -745,11 +615,11 @@
               <input
                 id="tagText"
                 type="text"
-                value="gto@supersuper.jp"
+                value="contact@example.com"
                 hidden
                 readonly
               />
-              <button id="contact-btn" class="contact-btn">
+              <button id="contact-btn" class="contact-btn" type="button">
                 <svg viewBox="0 0 14 11">
                   <use
                     xlink:href="./assets/images/ico/splite.svg#ico-mail"
@@ -763,18 +633,13 @@
                 <p class="contact-access">アクセス</p>
                 <div class="contact-adress">
                   <p>〒000-0000</p>
-                  <p>滋賀県栗東市綣(へそ)1-1天使大学1号館104号室</p>
+                  <p>住所を入力してください。（サンプル）</p>
                 </div>
               </div>
-              <iframe
-                class="googlemap"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.828030689842!2d139.7645498754798!3d35.681236172587326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1698374467641!5m2!1sja!2sjp"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              >
-              </iframe>
+              <!-- 公開前に、ここを研究室自身のGoogle Maps埋め込みコードへ置き換えてください。 -->
+              <div class="googlemap googlemap-placeholder" role="note">
+                地図は未設定です。<br />公開前に研究室の地図を設定してください。
+              </div>
             </div>
           </div>
         </section>
@@ -786,12 +651,16 @@
     <footer>
       <div class="footer-link">
         <p class="footer-link-text">Created with</p>
-        <a href="#" target="_blank"
-          ><img src="assets/images/logo-academeia.svg"
+        <a
+          href="https://www.academeia15.co.jp/web-template"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="アカデメイアの研究者HPテンプレート解説ページを開く"
+          ><img src="assets/images/logo-academeia.svg" alt="アカデメイア"
         /></a>
       </div>
       <div class="footer-copyright">
-        Copyright (C) 研究室名. All Rights Reserved.
+        Copyright (C) 20XX 研究室名（サンプル）. All Rights Reserved.
       </div>
     </footer>
     <!-- END フッターの要素 -->

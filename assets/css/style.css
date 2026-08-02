@@ -17,7 +17,7 @@ html {
   font-family: Noto Sans JP, sans-serif;
   -webkit-font-smoothing: antialiased;
   color: var(--color-text);
-  font-feature-settings: palt on;
+  font-feature-settings: "palt" on;
   scroll-behavior: smooth
 }
 
@@ -37,8 +37,22 @@ img {
   display: none !important
 }
 
+[hidden] {
+  display: none !important
+}
+
 .is-visible {
-  opacity: 0
+  animation: fade-in .3s ease both
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 header {
@@ -93,7 +107,7 @@ header {
 .header-burger {
   display: block;
   width: 22px;
-  height: 2;
+  height: 2px;
   margin: 5px;
   background-color: var(--color-gray);
   transition: .3s
@@ -223,6 +237,21 @@ nav p {
 .logo-university img {
   height: 100%;
   width: auto
+}
+
+.logo-university-placeholder {
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  border: 1px solid #d4dbe1;
+  color: var(--color-gray);
+  background-color: var(--color-white);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center
 }
 
 nav .current {
@@ -481,6 +510,22 @@ h3 {
   height: auto
 }
 
+.profile-image-placeholder {
+  display: grid;
+  flex: 0 0 90pt;
+  width: 90pt;
+  aspect-ratio: 3 / 4;
+  place-items: center;
+  padding: 12px;
+  border: 1px solid #d4dbe1;
+  background-color: var(--color-nav-current);
+  color: var(--color-gray);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center
+}
+
 .profile-info-text-wrapp {
   font-size: 13px;
   font-weight: 700;
@@ -669,6 +714,19 @@ h4 {
   height: 280px
 }
 
+.googlemap-placeholder {
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  border: 1px dashed #a0a0a0;
+  background-color: var(--color-nav-current);
+  color: var(--color-gray);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.8;
+  text-align: center
+}
+
 footer {
   font-weight: 700;
   padding-top: 30px;
@@ -745,11 +803,18 @@ footer {
 
 .mySwiper2 .swiper-slide {
   max-height: 600px;
-  overflow-y: scroll
+  overflow-y: auto;
+  scrollbar-color: var(--color-key) transparent;
+  scrollbar-width: thin
 }
 
 .mySwiper2 .swiper-slide::-webkit-scrollbar {
-  display: none
+  width: 8px
+}
+
+.mySwiper2 .swiper-slide::-webkit-scrollbar-thumb {
+  border-radius: 100vh;
+  background-color: var(--color-key)
 }
 
 .tab-wrapp .swiper-slide-thumb-active {
@@ -848,6 +913,25 @@ footer {
   margin-bottom: 10px
 }
 
+.academic-empty {
+  padding: 60px 30px;
+  color: var(--color-gray);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center
+}
+
+.header-name,
+.news-title,
+.theme-body,
+.member-name,
+.profile-info-wrapp,
+.profile-history-text,
+.mySwiper2 ul li,
+.contact-wrapp {
+  overflow-wrap: anywhere
+}
+
 #message {
   display: inline-flex;
   padding: 4px 9px 5px;
@@ -898,10 +982,6 @@ footer {
   font-weight: 700;
   line-height: 100%;
   letter-spacing: .72px
-}
-
-.simplebar-scrollbar:before {
-  background: var(--color-key)
 }
 
 @media(min-width:769px) {
@@ -1189,6 +1269,13 @@ footer {
     min-width: 10pc
   }
 
+  .profile-image-placeholder {
+    width: 100%;
+    min-width: 10pc;
+    max-width: 15pc;
+    flex-basis: auto
+  }
+
   .profile-info-text-wrapp {
     font-size: 9pt;
     gap: 10px
@@ -1240,10 +1327,6 @@ footer {
 
   .member .more-btn {
     margin-top: 30px
-  }
-
-  */.contact-wrapp {
-    gap: 750pt
   }
 
   .contact-text-wrapp {

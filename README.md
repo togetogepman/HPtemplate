@@ -20,15 +20,13 @@
 
 ## ヘッダーについて
 
-![](./_mdassets/001.png)
-
 ### 上部ヘッダーについて
 
 画面上部のヘッダー部分になります。下記該当コードの `header-box` `header-name-wrapp-ja` `header-name-wrapp-en` の内容を適宜編集してください。
 
 ```html
 <div class="header-contents">
-  <a href="#" class="header-title">
+  <a href="#top" class="header-title">
     <div class="header-box">
       アイコン的な画像を挿入する場合はここにimgタグを入力してください
     </div>
@@ -66,7 +64,7 @@
     <p>Menu</p>
     <div id="nav-list"></div>
     <div class="logo-university">
-      <a href="#" target="_blank">
+      <a href="https://example.com" target="_blank" rel="noopener noreferrer">
         ここに所属する大学のロゴ画像をimgタグで入力してください。
       </a>
     </div>
@@ -80,32 +78,17 @@
 
 ### ヘッダー画像について
 
-![](./_mdassets/002.png)
-画像を 3 種類用意していただく必要があります。
-
-- PC 用\_2 種
-  - ① retina では無いディスプレイ用のために画像パスのあとに `1x` とつける
-  - ② retina ディスプレイ用のために画像パスのあとに `2x` とつける
-  - ③ PC 画像は`(min-width:769px)` の `srcset` 内にパスを記述してください。
-- SP 用\_1 種
-  - ④ SP 画像は`(max-width:768px)` の `srcset` 内にパスを記述してください。
-- img タグの画像はフォールバック用の記述になりますので、中間である ① の画像を記述してください。
+掲載権限を確認した画像を用意し、`src` と `alt` を編集してください。
+画面幅ごとに画像を変更する場合は、必要に応じて `source` 要素を追加してください。
 
 ```html
 <!-- START メインビジュアル -->
 <div class="mv">
   <picture class="mv">
-    <!-- PC用 -->
-    <source
-      media="(min-width:769px)"
-      srcset="
-        ./assets/images/sample-mv.png     1x,
-        ./assets/images/sample-mv-@x2.png 2x
-      "
+    <img
+      src="./assets/images/sample-mv.png"
+      alt="研究室で実験装置を操作する様子（サンプル画像）"
     />
-    <!-- SP用 -->
-    <source media="(max-width:768px)" srcset="./assets/images/sample-mv.png" />
-    <img src="./assets/images/sample-mv.png" alt="Example image" />
   </picture>
 </div>
 <!-- END メインビジュアル -->
@@ -144,19 +127,21 @@
 
 ### NEWS セクションについて
 
-![](./_mdassets/003.png)
-
 ニュースの一覧は下記 li タグを複製して日付、タイトル、外部リンクがある場合は URL を入力してください。<br>
 外部リンクが無い場合は`is-link` クラスを削除してください。
 
 ```html
 <li class="news-item is-link" data-more="">
-  <div class="news-date">2023.10.05</div>
+  <div class="news-date">20XX.04.01</div>
   <div class="news-text">
     <div class="news-title">
-      全日本天使・悪魔対抗弁論大会で当研究室のミハイル・ゴルバチョフ君が優秀天使賞を受賞しました。
+      ［学年］の［メンバー名］が［発表会名］で研究成果を発表しました。（サンプル）
     </div>
-    <a href="#" target="_blank" class="link"
+    <a
+      href="https://example.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="link"
       >記事を見る<span class="ico"
         ><svg viewBox="0 0 14 12">
           <use
@@ -169,60 +154,35 @@
 
 ### 研究テーマセクションについて
 
-![](./_mdassets/004.png)
-
 見出し、内容、画像があれば画像を入力してください。
 リストのナンバリングは css 側で自動的に付与されます。
 
 ```html
 <li class="theme-item">
-  <h3 class="h3-number">ナゾの実の伝承を追う</h3>
+  <h3 class="h3-number">研究テーマ名（サンプル）</h3>
   <div class="theme-body">
     <p>
-      かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。
+      ここには研究の背景、目的、独自性を入力します。この文章は表示確認用のサンプルです。
     </p>
     <div class="theme-img">
       <picture>
-        <!-- PC用でretinaかそうじゃないか -->
-        <source
-          media="(min-width:769px)"
-          srcset="
-            ./assets/images/sample-ph-01.png     1x,
-            ./assets/images/sample-ph-01-@x2.png 2x
-          "
+        <img
+          src="./assets/images/sample-ph-01.png"
+          alt="木になった果実（サンプル画像）"
         />
-        <!-- SP用 -->
-        <source
-          media="(max-width:768px)"
-          srcset="./assets/images/sample-ph-01.png"
-        />
-        <img src="./assets/images/sample-ph-01.png" alt="Example image" />
       </picture>
       <picture>
-        <!-- PC用でretinaかそうじゃないか -->
-        <source
-          media="(min-width:769px)"
-          srcset="
-            ./assets/images/sample-ph-02.png     1x,
-            ./assets/images/sample-ph-02-@x2.png 2x
-          " />
-        <!-- SP用 -->
-        <source
-          media="(max-width:768px)"
-          srcset="./assets/images/sample-ph-02.png" />
-        <img src="./assets/images/sample-ph-02.png" alt="Example image"
+        <img src="./assets/images/sample-ph-02.png" alt="イチジク（サンプル画像）"
       /></picture>
     </div>
     <p>
-      かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。かつて人類は知恵の実を食べたおかげで知恵を持つことができるようになりました。当研究室では世界各地に存在するナゾの実の伝承について研究するとともに、川口浩探検隊と共同研究を行っています。
+      ここには研究方法、期待される成果、社会への応用可能性などを入力します。（サンプル）
     </p>
   </div>
 </li>
 ```
 
 ### 研究室のモットーセクションについて
-
-![](./_mdassets/005.png)
 
 見出し本文を入力してください。
 
@@ -237,8 +197,6 @@
 
 ### 研究室メンバーセクションについて
 
-![](./_mdassets/006.png)
-
 h4 に大項目、p にメンバーの名前を入力してください。<br>
 リストの 2 番目以降は非表示になり、もっと見るボタンで表示する形式になります。
 
@@ -248,9 +206,9 @@ h4 に大項目、p にメンバーの名前を入力してください。<br>
   <ul class="member-li">
     <li class="member-name-li">
       <div class="member-name">
-        <p>Zlatan Ibrahimović (3年)</p>
-        <p>遠山 金四郎 (2年)</p>
-        <p>Mikhail Sergeevich Gorbachev (1年)</p>
+        <p>［博士後期課程3年 氏名］</p>
+        <p>［博士後期課程2年 氏名］</p>
+        <p>［博士後期課程1年 氏名］</p>
       </div>
     </li>
   </ul>
@@ -259,30 +217,36 @@ h4 に大項目、p にメンバーの名前を入力してください。<br>
 
 ### プロフィールセクションについて
 
-![](./_mdassets/007.png)
-
 画像、外部リンクがあれば URL、略歴を入力してください。
 
 ```html
 <!-- 氏名・役職・画像欄 -->
 <div>
   <div class="profile-info-text-wrapp">
-    <p class="profile-info-position">教授</p>
+    <p class="profile-info-position">役職（サンプル）</p>
     <div class="profile-info-name">
-      <p class="profile-info-name-ja">佐藤 太郎</p>
-      <p>Sato Taro</p>
+      <p class="profile-info-name-ja">研究者名（サンプル）</p>
+      <p>Researcher Name (Sample)</p>
     </div>
   </div>
   <div class="profile-info-link-wrapp is-link">
-    <a href="#" target="_blank" class="link"
-      >東京大学研究者紹介<span class="ico"
+    <a
+      href="https://example.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="link"
+      >研究者紹介ページ<span class="ico"
         ><svg viewBox="0 0 14 12">
           <use
             xlink:href="./assets/images/ico/splite.svg#ico-link"
           ></use></svg></span
     ></a>
-    <a href="#" target="_blank" class="link"
-      >Google Scholar<span class="ico"
+    <a
+      href="https://example.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="link"
+      >研究業績ページ<span class="ico"
         ><svg viewBox="0 0 14 12">
           <use
             xlink:href="./assets/images/ico/splite.svg#ico-link"
@@ -297,10 +261,9 @@ h4 に大項目、p にメンバーの名前を入力してください。<br>
     <h4>経歴</h4>
     <ul class="profile-history-li">
       <li class="profile-history-text-wrapp">
-        <p class="profile-history-year">2023</p>
+        <p class="profile-history-year">20XX</p>
         <div class="profile-history-text">
-          <p>天使大学医学部卒業 医師免許取得</p>
-          <p>天使大学大学院医学研究科博士課程入学</p>
+          <p>［学歴・経歴を入力してください］（サンプル）</p>
         </div>
       </li>
     </ul>
@@ -309,9 +272,9 @@ h4 に大項目、p にメンバーの名前を入力してください。<br>
     <h4>受賞歴</h4>
     <ul class="profile-history-li">
       <li class="profile-history-text-wrapp">
-        <p class="profile-history-year">2023</p>
+        <p class="profile-history-year">20XX</p>
         <div class="profile-history-text">
-          <p>ヨーロピアンシュガーコーン賞受賞</p>
+          <p>［受賞歴を入力してください］（サンプル）</p>
         </div>
       </li>
     </ul>
@@ -321,9 +284,7 @@ h4 に大項目、p にメンバーの名前を入力してください。<br>
     <ul class="profile-history-li">
       <li class="profile-history-text-wrapp">
         <div class="profile-history-text">
-          <p>日本医学会</p>
-          <p>国際形成外科学会</p>
-          <p>国際形成外科学会</p>
+          <p>［所属学会を入力してください］（サンプル）</p>
         </div>
       </li>
     </ul>
@@ -332,8 +293,6 @@ h4 に大項目、p にメンバーの名前を入力してください。<br>
 ```
 
 ### 論文研究発表セクションについて
-
-![](./_mdassets/008.png)
 
 タブの編集は下記箇所を編集してください。`data-index=`はグローバルナビのアコーディオンに出現する部分になりますので、忘れずにこちらも入力してください。
 
@@ -352,14 +311,17 @@ h4 に大項目、p にメンバーの名前を入力してください。<br>
 ```html
 <div class="swiper mySwiper2">
   <div class="swiper-wrapper">
-    <div class="swiper-slide" data-simplebar="">
+    <div class="swiper-slide">
       <ul class="paper">
         <li class="list-item is-link">
-          小林由弥, 鈴木雅大, 松尾豊:
-          深層生成モデルによる背景情報を利用したシーン解釈, 人工知能学会論文誌,
-          第38巻3号, (2023).
+          論文タイトル（サンプル）
           <span>
-            <a class="link" href="#" target="_blank">
+            <a
+              class="link"
+              href="https://example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               外部リンク
               <span class="ico">
                 <svg viewBox="0 0 14 12">
@@ -372,16 +334,16 @@ h4 に大項目、p にメンバーの名前を入力してください。<br>
           </span>
         </li>
       </ul>
-      <button class="load-more">
+      <button class="load-more" type="button">
         <svg viewBox="0 0 13 3">
           <use xlink:href="./assets/images/ico/splite.svg#ico-more"></use></svg
         >もっと見る
       </button>
     </div>
-    <div class="swiper-slide" data-simplebar="">
+    <div class="swiper-slide">
       <!-- ul から同様の中身 -->
     </div>
-    <div class="swiper-slide" data-simplebar="">
+    <div class="swiper-slide">
       <!-- ul から同様の中身 -->
     </div>
   </div>
@@ -390,27 +352,21 @@ h4 に大項目、p にメンバーの名前を入力してください。<br>
 
 ### Contact セクションについて
 
-![](./_mdassets/009.png)
-
 問い合わせのメールアドレスは`value=`の中にアドレスを入力してください。
 
 ```html
 <!-- メールアドレス -->
-<input id="tagText" type="text" value="sample@test.co.jp" hidden readonly />
+<input id="tagText" type="text" value="contact@example.com" hidden readonly />
 ```
 
-GoogleMaps の下記 iframe ごと変更してください。
+地図を掲載する場合は、下記のサンプル表示を研究室自身の Google Maps
+埋め込みコードへ置き換えてください。
 
 ```html
-<iframe
-  class="googlemap"
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.828030689842!2d139.7645498754798!3d35.681236172587326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1698374467641!5m2!1sja!2sjp"
-  style="border: 0"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
->
-</iframe>
+<!-- 公開前に、ここを研究室自身のGoogle Maps埋め込みコードへ置き換えてください。 -->
+<div class="googlemap googlemap-placeholder" role="note">
+  地図は未設定です。公開前に研究室の地図を設定してください。
+</div>
 ```
 
 ## その他
