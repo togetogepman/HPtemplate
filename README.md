@@ -50,19 +50,20 @@ ChatGPTは、研究室資料の整理、公開用原稿、Codexへ渡す依頼�
 
 GitHubはファイルと変更履歴を保管・共有するサービスです。branchは公開用の内容と作業中の内容を分ける作業線、commitは変更をひとまとまりで記録する操作、pushはその記録をGitHub上のremote（保存先）へ送る操作です。
 
-Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から継続的な作業規則を読みます。`prompts/`のMarkdownは、目的別に内容を入力してCodexへ貼り付ける依頼テンプレートです。Codexのスラッシュコマンドではありません。
+Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から継続的な作業規則を読みます。`prompts/`のMarkdownは、目的別にCodexへ渡す依頼テンプレートです。初回カスタマイズだけはExcelを入力の正本とし、日常更新では各Markdownの入力欄を使います。これらはCodexのスラッシュコマンドではありません。
 
 研究実績、所属、肩書、論文、受賞等をAIに推測させないでください。未公開情報、個人情報、APIキー、認証情報を安易に入力しないでください。
 
 ## 7. 最短の開始手順
 
 1. GitHub上で自分用のリポジトリを用意します。
-2. Codexでそのリポジトリを開きます。
-3. [初期カスタマイズ用プロンプト](./prompts/INITIAL_CUSTOMIZATION.md)の入力欄へ、確認済みの研究室情報を貼ります。
-4. プロンプト全体をCodexへ渡します。
-5. Codexの変更報告、ブラウザ表示、commit内容を人が確認します。
-6. [公開前確認用プロンプト](./prompts/PRE_PUBLISH_REVIEW.md)で検査します。
-7. 問題がなければGitHub Pagesを設定します。
+2. GitHub Desktop等でPCへcloneします。
+3. [研究室HP入力用Excel](./input/laboratory-input.xlsx)を開き、黄色い入力欄を書き換えます。
+4. `00_チェック`が「入力完了」になったことを確認し、Excelを保存します。
+5. Codexでリポジトリを開き、[初期カスタマイズ用プロンプト](./prompts/INITIAL_CUSTOMIZATION.md)を渡します。
+6. CodexがExcelを読み、`index.html`へ反映・検証・commit・pushした結果を人が確認します。
+7. [公開前確認用プロンプト](./prompts/PRE_PUBLISH_REVIEW.md)で検査します。
+8. 問題がなければGitHub Pagesを設定します。
 
 詳しい手順は[はじめ方](./docs/GETTING_STARTED.md)を参照してください。
 
@@ -72,6 +73,7 @@ Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から
 |---|---|
 | `index.html` | 利用者が自分の研究室サイトとして編集する正本 |
 | `sample.html` | 完成見本、件数境界、回帰試験用 |
+| `input/laboratory-input.xlsx` | 初回カスタマイズで利用者が研究室情報を入力する正本 |
 | `AGENTS.md` | Codexが守るリポジトリ固有ルール |
 | `DESIGN.md` | 現行デザイン仕様と変更希望の記入欄 |
 | `assets/css/theme.css` | 色、フォント、主要余白等の変更頻度が高い値 |
@@ -82,7 +84,9 @@ Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から
 
 ## 9. 初期カスタマイズ
 
-[INITIAL_CUSTOMIZATION.md](./prompts/INITIAL_CUSTOMIZATION.md)へ、研究室名、所属、研究テーマ、メンバー、プロフィール、論文、NEWS、Contact、画像等を入力し、Codexへ渡してください。
+[研究室HP入力用Excel](./input/laboratory-input.xlsx)をそのまま開き、黄色い入力欄を研究室情報へ書き換えて保存します。次に[INITIAL_CUSTOMIZATION.md](./prompts/INITIAL_CUSTOMIZATION.md)をCodexへ渡すと、CodexがExcelを読み、公開用の`index.html`へ反映します。同じ情報をMarkdownへ転記する必要はありません。
+
+このExcelはGit管理対象で、commit・pushするとGitHubへ保存される可能性があります。公開されても問題ない情報だけを入力してください。
 
 入力資料にない事実は空欄またはプレースホルダーのままにします。実在しそうな情報をAIに補完させないでください。
 

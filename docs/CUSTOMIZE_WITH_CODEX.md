@@ -16,7 +16,13 @@ Codexが作業開始時に読むリポジトリ固有の規則です。事実性
 
 ### `prompts/`
 
-目的別の依頼文テンプレートです。各ファイルの入力欄を埋め、Markdown全体をCodexへ貼り付けます。リポジトリ内のこれらのファイルは、Codexのスラッシュコマンドや自動実行機能ではありません。
+目的別の依頼文テンプレートです。初回カスタマイズでは`INITIAL_CUSTOMIZATION.md`に情報を記入せず、入力済みExcelを読むための依頼文としてそのままCodexへ渡します。NEWS追加、メンバー更新、論文追加等の日常更新では、引き続き各Markdownの入力欄を使います。これらのファイルは、Codexのスラッシュコマンドや自動実行機能ではありません。
+
+### `input/laboratory-input.xlsx`
+
+初回カスタマイズで、研究室情報を入力する正本です。clone後にこのファイルをそのまま開き、黄色い入力欄を書き換え、`00_チェック`を確認して保存します。Codexは`prompts/INITIAL_CUSTOMIZATION.md`の依頼に従い、このExcelを読んで`index.html`へ反映します。同じ情報をMarkdownへ二重入力する必要はありません。
+
+ExcelもGit管理対象です。commit・pushするとGitHubへ保存される可能性があるため、公開されても問題ない情報だけを入力してください。
 
 ### `index.html`と`sample.html`
 
@@ -26,6 +32,10 @@ Codexが作業開始時に読むリポジトリ固有の規則です。事実性
 両ページは同じCSS、JavaScript、画像を利用します。
 
 ## 目的別プロンプトの使い方
+
+初回カスタマイズは、`input/laboratory-input.xlsx`へ入力して保存した後、`prompts/INITIAL_CUSTOMIZATION.md`全体をCodexへ渡します。
+
+日常更新は次の手順です。
 
 1. 今回の目的に合う`prompts/*.md`を開きます。
 2. 入力欄へ確認済み情報を貼ります。
