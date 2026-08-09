@@ -31,6 +31,12 @@ ExcelもGit管理対象です。commit・pushするとGitHubへ保存される�
 
 両ページは同じCSS、JavaScript、画像を利用します。
 
+### 画像入力
+
+初回カスタマイズの画像原本は `input/images/` に置きます。固定画像は `input/laboratory-input.xlsx` の `10_画像`、研究テーマ画像は `03_研究テーマ` の各行でファイル名を指定します。
+
+メイン画像だけは必須です。その他の画像は任意です。Codexは使用指定された画像が実在することを先に確認し、不足があればHTMLを変更せず報告します。反映時は原本を保持したまま、公開用コピーを `assets/images/user/` に配置します。
+
 ## 目的別プロンプトの使い方
 
 初回カスタマイズは、`input/laboratory-input.xlsx`へ入力して保存した後、`prompts/INITIAL_CUSTOMIZATION.md`全体をCodexへ渡します。

@@ -59,11 +59,14 @@ Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から
 1. GitHub上で自分用のリポジトリを用意します。
 2. GitHub Desktop等でPCへcloneします。
 3. [研究室HP入力用Excel](./input/laboratory-input.xlsx)を開き、黄色い入力欄を書き換えます。
-4. `00_チェック`が「入力完了」になったことを確認し、Excelを保存します。
-5. Codexでリポジトリを開き、[初期カスタマイズ用プロンプト](./prompts/INITIAL_CUSTOMIZATION.md)を渡します。
-6. CodexがExcelを読み、`index.html`へ反映・検証・commit・pushした結果を人が確認します。
-7. [公開前確認用プロンプト](./prompts/PRE_PUBLISH_REVIEW.md)で検査します。
-8. 問題がなければGitHub Pagesを設定します。
+4. メイン画像を1枚用意して`input/images/`へ入れ、Excelの`10_画像`へファイル名を入力します。研究テーマ等の追加画像は任意です。
+5. `00_チェック`が「入力完了」になったことを確認し、Excelを保存します。
+6. Codexでリポジトリを開き、[初期カスタマイズ用プロンプト](./prompts/INITIAL_CUSTOMIZATION.md)を渡します。
+7. CodexがExcelと画像を読み、`index.html`へ反映・検証・commit・pushした結果を人が確認します。
+8. [公開前確認用プロンプト](./prompts/PRE_PUBLISH_REVIEW.md)で検査します。
+9. 問題がなければGitHub Pagesを設定します。
+
+画像の推奨サイズ・形式はExcel内に記載しています。最低限、横長のメイン画像を1枚用意すれば初回カスタマイズできます。
 
 詳しい手順は[はじめ方](./docs/GETTING_STARTED.md)を参照してください。
 
@@ -73,7 +76,9 @@ Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から
 |---|---|
 | `index.html` | 利用者が自分の研究室サイトとして編集する正本 |
 | `sample.html` | 完成見本、件数境界、回帰試験用 |
-| `input/laboratory-input.xlsx` | 初回カスタマイズで利用者が研究室情報を入力する正本 |
+| `input/laboratory-input.xlsx` | 初回カスタマイズで利用者が研究室情報と画像指定を入力する正本 |
+| `input/images/` | 利用者が初回カスタマイズで使う画像の原本を置く場所 |
+| `assets/images/user/` | Codexが公開ページ用の画像を配置する場所 |
 | `AGENTS.md` | Codexが守るリポジトリ固有ルール |
 | `DESIGN.md` | 現行デザイン仕様と変更希望の記入欄 |
 | `assets/css/theme.css` | 色、フォント、主要余白等の変更頻度が高い値 |
@@ -84,9 +89,11 @@ Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から
 
 ## 9. 初期カスタマイズ
 
-[研究室HP入力用Excel](./input/laboratory-input.xlsx)をそのまま開き、黄色い入力欄を研究室情報へ書き換えて保存します。次に[INITIAL_CUSTOMIZATION.md](./prompts/INITIAL_CUSTOMIZATION.md)をCodexへ渡すと、CodexがExcelを読み、公開用の`index.html`へ反映します。同じ情報をMarkdownへ転記する必要はありません。
+[研究室HP入力用Excel](./input/laboratory-input.xlsx)をそのまま開き、黄色い入力欄を研究室情報へ書き換えます。画像は`input/images/`へ入れ、Excelにはファイル名を入力します。メイン画像は必須、研究テーマ画像、プロフィール画像、大学・組織ロゴ、SNS共有画像、サイトアイコンは任意です。
 
-このExcelはGit管理対象で、commit・pushするとGitHubへ保存される可能性があります。公開されても問題ない情報だけを入力してください。
+次に[INITIAL_CUSTOMIZATION.md](./prompts/INITIAL_CUSTOMIZATION.md)をCodexへ渡すと、CodexがExcelと画像を読み、公開用の`index.html`へ反映します。同じ情報をMarkdownへ転記する必要はありません。
+
+Excelと`input/images/`はGit管理対象です。commit・pushするとGitHubへ保存される可能性があるため、公開されても問題ない情報・画像だけを置いてください。
 
 入力資料にない事実は空欄またはプレースホルダーのままにします。実在しそうな情報をAIに補完させないでください。
 
@@ -107,7 +114,7 @@ Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から
 
 ## 12. 公開前確認
 
-[PRE_PUBLISH_REVIEW.md](./prompts/PRE_PUBLISH_REVIEW.md)を使い、サンプル文言、プレースホルダー、論文・受賞・所属の正確性、個人情報、404、PC/SP表示、Contactコピー、帰属表示等を確認します。
+[PRE_PUBLISH_REVIEW.md](./prompts/PRE_PUBLISH_REVIEW.md)を使い、サンプル文言、サンプル画像、プレースホルダー、論文・受賞・所属の正確性、個人情報、404、PC/SP表示、Contactコピー、帰属表示等を確認します。
 
 事実関係、掲載許可、画像の権利は自動検査だけでは判断できません。研究代表者または公開責任者が確認してください。
 
