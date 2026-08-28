@@ -22,7 +22,7 @@ Codexが作業開始時に読むリポジトリ固有の規則です。事実性
 
 初回カスタマイズで、研究室情報を入力する正本です。clone後にこのファイルをそのまま開き、黄色い入力欄を書き換え、`00_チェック`を確認して保存します。Codexは`prompts/INITIAL_CUSTOMIZATION.md`の依頼に従い、このExcelを読んで`index.html`へ反映します。同じ情報をMarkdownへ二重入力する必要はありません。
 
-ExcelもGit管理対象です。commit・pushするとGitHubへ保存される可能性があるため、公開されても問題ない情報だけを入力してください。
+配布時のExcelと画像フォルダはGit管理対象です。初回カスタマイズでは、Codexが入力済みExcelと`input/images/`の作業用画像をローカルに残したままGitの追跡対象から外し、以後GitHubへ保存されないようにしてからHPへ反映します。
 
 ### `index.html`と`sample.html`
 

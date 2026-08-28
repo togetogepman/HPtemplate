@@ -93,7 +93,7 @@ Codexはリポジトリを開くと、ルートの[AGENTS.md](./AGENTS.md)から
 
 次に[INITIAL_CUSTOMIZATION.md](./prompts/INITIAL_CUSTOMIZATION.md)をCodexへ渡すと、CodexがExcelと画像を読み、公開用の`index.html`へ反映します。同じ情報をMarkdownへ転記する必要はありません。
 
-Excelと`input/images/`はGit管理対象です。commit・pushするとGitHubへ保存される可能性があるため、公開されても問題ない情報・画像だけを置いてください。
+配布時のExcelと画像フォルダはGit管理対象です。初回カスタマイズでは、Codexが入力済みExcelと`input/images/`の作業用画像をローカルに残したままGitの追跡対象から外し、以後GitHubへ保存されないようにしてからHPへ反映します。
 
 入力資料にない事実は空欄またはプレースホルダーのままにします。実在しそうな情報をAIに補完させないでください。
 
